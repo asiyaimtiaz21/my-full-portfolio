@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/my-full-portfolio/static/css/main.5d1351f2.css",
+    "main.js": "/my-full-portfolio/static/js/main.857494d6.js",
+    "static/media/nova-title.jpg": "/my-full-portfolio/static/media/nova-title.0519e43aa2f4d1af445c.jpg",
+    "static/media/exercise-placeholder.svg": "/my-full-portfolio/static/media/exercise-placeholder.492f89cb62a2387d79624e4044be4891.svg",
+    "static/media/reading-placeholder.svg": "/my-full-portfolio/static/media/reading-placeholder.44a21848b74c37d0afd36731214171c9.svg",
+    "static/media/coming-soon.svg": "/my-full-portfolio/static/media/coming-soon.12513a599bcb1e6c3b7abd1f4452a3ea.svg",
+    "index.html": "/my-full-portfolio/index.html",
+    "main.5d1351f2.css.map": "/my-full-portfolio/static/css/main.5d1351f2.css.map",
+    "main.857494d6.js.map": "/my-full-portfolio/static/js/main.857494d6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5d1351f2.css",
+    "static/js/main.857494d6.js"
+  ]
+}
