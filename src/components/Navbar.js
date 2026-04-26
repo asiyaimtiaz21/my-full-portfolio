@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import './Navbar.css';
 
 const links = [
@@ -13,9 +13,25 @@ const links = [
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navRef = useRef(null);
+  const location = useLocation();
+
+  // Close mobile menu on outside click
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (menuOpen && navRef.current && !navRef.current.contains(e.target)) {
+        setMenuOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [menuOpen]);
+
+  // Determine if we're on a project detail page so Projects link stays active
+  const isProjectDetail = location.pathname.startsWith('/project/');
 
   return (
-    <nav className="navbar">
+    <nav className="navbar" ref={navRef}>
       <Link to="/" className="navbar-logo">Asiya Imtiaz</Link>
 
       <button
@@ -35,7 +51,9 @@ function Navbar() {
             <NavLink
               to={to}
               end={to === '/'}
-              className={({ isActive }) => isActive ? 'active' : ''}
+              className={({ isActive }) =>
+                isActive || (to === '/projects' && isProjectDetail) ? 'active' : ''
+              }
               onClick={() => setMenuOpen(false)}
             >
               {label}

@@ -1,6 +1,4 @@
 import novaImage      from '../assets/images/nova-title.jpg';
-import readingImage   from '../assets/images/reading-placeholder.svg';
-import exerciseImage  from '../assets/images/exercise-placeholder.svg';
 import comingSoonImage from '../assets/images/coming-soon.svg';
 
 // Stock photos — replace with locally-hosted images before final deploy if preferred
