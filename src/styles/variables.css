@@ -1,0 +1,57 @@
+:root {
+  /* ── Brand ── */
+  --primary:        #C27BA0;   /* dusty rose */
+  --primary-dark:   #A45F85;   /* deeper rose */
+  --primary-light:  #F5E6EF;   /* pale blush */
+
+  /* ── Pastel accents ── */
+  --accent-lavender: #B8A9D9;
+  --accent-peach:    #F2C9B2;
+  --accent-blue:     #A8C8E8;
+  --accent-mint:     #A8D8C4;
+
+  /* ── Gradients ── */
+  --gradient-primary: linear-gradient(135deg, #B8A9D9 0%, #C27BA0 100%);
+  --gradient-hero:    linear-gradient(160deg, #FDFBFF 0%, #FDF0F8 55%, #F4F0FF 100%);
+  --gradient-nav:     linear-gradient(135deg, #8A6BA8 0%, #C27BA0 100%);
+
+  /* ── Backgrounds ── */
+  --bg-cream:    #FDFBFF;   /* near-white, faint lavender hint */
+  --bg-warm:     #FDF0F8;   /* soft blush pink */
+  --bg-section:  #F4F0FF;   /* light lavender */
+  --secondary:   #FFFFFF;
+
+  /* ── Text ── */
+  --text-dark:   #2D2040;   /* warm dark purple */
+  --text-body:   #5A4F72;   /* lavender-tinted body */
+  --text-muted:  #9B8FB5;   /* soft muted */
+
+  /* ── Fonts ── */
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans:  'Nunito', 'DM Sans', Arial, sans-serif;
+
+  /* ── Spacing (unchanged) ── */
+  --space-xs:   0.5rem;
+  --space-sm:   1rem;
+  --space-md:   2rem;
+  --space-lg:   4rem;
+  --space-xl:   5rem;
+  --space-2xl:  7rem;
+
+  /* ── Elevation (rose-tinted) ── */
+  --shadow-sm:  0 2px 16px rgba(194, 123, 160, 0.09);
+  --shadow-md:  0 8px 32px rgba(194, 123, 160, 0.17);
+  --shadow-lg:  0 18px 52px rgba(194, 123, 160, 0.24);
+
+  /* ── Borders (softer, more rounded) ── */
+  --radius-sm:   10px;
+  --radius-md:   16px;
+  --radius-lg:   24px;
+  --radius-pill: 100px;
+  --border-muted: 1px solid #EAE0F5;
+
+  /* ── Transitions ── */
+  --transition-fast:   0.2s ease;
+  --transition-base:   0.28s ease;
+  --transition-slow:   0.45s ease;
+}

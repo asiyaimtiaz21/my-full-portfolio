@@ -1,0 +1,215 @@
+/* ── Hero ── */
+.hero {
+  min-height: calc(100vh - 62px);
+  min-height: calc(100svh - 62px); /* iOS Safari: excludes shifting URL bar */
+  display: flex;
+  align-items: center;
+  padding: 0 var(--space-md);
+  background: var(--gradient-hero);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Soft decorative blobs */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -80px;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(184, 169, 217, 0.22) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: -60px;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(242, 201, 178, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-content {
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin: 0 0 var(--space-sm);
+  animation: fadeUp 0.5s ease both;
+}
+
+.hero-divider {
+  width: 40px;
+  height: 2px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-pill);
+  margin-bottom: 1.25rem;
+  animation: fadeUp 0.5s ease 0.05s both;
+}
+
+.hero-name {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 8vw, 4.5rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.08;
+  letter-spacing: 0.01em;
+  margin-bottom: 1.5rem;
+  animation: fadeUp 0.5s ease 0.1s both;
+}
+
+.hero-subtitle {
+  font-family: var(--font-sans);
+  font-size: 1.06rem;
+  font-weight: 400;
+  line-height: 1.82;
+  color: var(--text-body);
+  max-width: 460px;
+  margin-bottom: 2.75rem;
+  animation: fadeUp 0.5s ease 0.2s both;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  animation: fadeUp 0.5s ease 0.3s both;
+}
+
+/* ── Hero buttons ── */
+.btn {
+  display: inline-block;
+  padding: 0.78rem 1.8rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition:
+    background-color var(--transition-base),
+    color var(--transition-base),
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary {
+  background: var(--gradient-primary);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(194, 123, 160, 0.3);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 8px 24px rgba(194, 123, 160, 0.42);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.btn-outline:hover {
+  background: var(--gradient-primary);
+  color: #fff;
+  border-color: transparent;
+}
+
+/* ── About Preview ── */
+.about-preview {
+  background: linear-gradient(160deg, var(--bg-warm) 0%, var(--bg-section) 100%);
+  padding: var(--space-xl) var(--space-md);
+  position: relative;
+}
+
+.about-preview::before {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-pill);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.about-preview-content {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.about-preview-content h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 3.5vw, 2.2rem);
+  font-weight: 600;
+  font-style: italic;
+  color: var(--text-dark);
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.01em;
+}
+
+.about-preview-content p {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--text-body);
+  margin-bottom: 2.25rem;
+  max-width: 540px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .hero {
+    min-height: unset;  /* don't stretch to full viewport — let content set the height */
+    padding: 3.5rem 1.5rem 3rem;
+    align-items: flex-start;
+  }
+
+  .hero-subtitle {
+    font-size: 0.97rem;
+    max-width: 100%;
+  }
+
+  .about-preview {
+    padding: var(--space-lg) 1.5rem;
+  }
+}
+
+/* Shrink decorative blobs on small screens so they don't add phantom width */
+@media (max-width: 480px) {
+  .hero::before {
+    width: 280px;
+    height: 280px;
+    top: -60px;
+    right: -60px;
+  }
+  .hero::after {
+    width: 220px;
+    height: 220px;
+    bottom: -40px;
+    left: -40px;
+  }
+}

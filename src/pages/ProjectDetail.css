@@ -1,0 +1,317 @@
+.detail-page {
+  background-color: var(--bg-cream);
+  min-height: calc(100vh - 62px);
+  padding: var(--space-xl) var(--space-md) var(--space-2xl);
+}
+
+.detail-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* ── Back link ── */
+.detail-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-bottom: 2.5rem;
+  transition: color var(--transition-fast);
+}
+
+.detail-back:hover {
+  color: var(--primary);
+}
+
+/* ── Header ── */
+.detail-category {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin: 0 0 0.75rem;
+  animation: fadeUp 0.5s ease both;
+}
+
+.detail-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.1;
+  margin: 0 0 1.5rem;
+  animation: fadeUp 0.5s ease 0.08s both;
+}
+
+/* ── External link buttons ── */
+.detail-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-bottom: 2.5rem;
+  animation: fadeUp 0.5s ease 0.12s both;
+}
+
+.detail-link-btn {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--radius-pill);
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.detail-link-btn:hover {
+  transform: translateY(-2px);
+}
+
+.detail-link-primary {
+  background: var(--gradient-primary);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(194, 123, 160, 0.3);
+}
+
+.detail-link-primary:hover {
+  box-shadow: 0 8px 24px rgba(194, 123, 160, 0.42);
+}
+
+.detail-link-outline {
+  background-color: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.detail-link-outline:hover {
+  background: var(--gradient-primary);
+  color: #fff;
+  border-color: transparent;
+}
+
+.detail-link-ghost {
+  background-color: transparent;
+  color: var(--text-muted);
+  border: 1.5px solid var(--border-muted);
+}
+
+.detail-link-ghost:hover {
+  color: var(--text-dark);
+  border-color: var(--text-muted);
+}
+
+/* ── Hero image ── */
+.detail-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  display: block;
+  background-color: var(--bg-warm);
+  margin-bottom: 3rem;
+  box-shadow: var(--shadow-md);
+  animation: fadeUp 0.5s ease 0.16s both;
+}
+
+/* ── Meta row: description + tools ── */
+.detail-meta {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3rem;
+  margin-bottom: 3.5rem;
+  padding-bottom: 3.5rem;
+  border-bottom: var(--border-muted);
+}
+
+.detail-description {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--text-body);
+}
+
+.detail-tools h3 {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin: 0 0 0.85rem;
+}
+
+/* Tool pills */
+.detail-tools-pills {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  min-width: 130px;
+}
+
+.detail-tool-pill {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-body);
+  background-color: var(--bg-section);
+  border: var(--border-muted);
+  padding: 0.32rem 0.8rem;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* ── Design Process ── */
+.detail-process h2 {
+  font-family: var(--font-serif);
+  font-size: 1.65rem;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--text-dark);
+  margin: 0 0 2rem;
+}
+
+.detail-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.detail-step {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  border-top: var(--border-muted);
+}
+
+.detail-step:last-child {
+  border-bottom: var(--border-muted);
+}
+
+.detail-step-label {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--primary);
+  padding-top: 2px;
+}
+
+.detail-step-text {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--text-body);
+}
+
+/* ── Retrospective ── */
+.detail-retrospective {
+  margin-top: 4rem;
+  padding-top: 3.5rem;
+  border-top: var(--border-muted);
+}
+
+.detail-retro-header {
+  margin-bottom: 1.5rem;
+}
+
+.detail-retro-eyebrow {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 0.6rem;
+}
+
+.detail-retro-title {
+  font-family: var(--font-serif);
+  font-size: 1.65rem;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.detail-retro-body {
+  margin: 0;
+  padding: 1.5rem 1.75rem;
+  background: linear-gradient(135deg, var(--bg-warm) 0%, var(--bg-section) 100%);
+  border-left: 3px solid var(--primary);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--text-body);
+  font-style: normal;
+}
+
+/* ── Not found ── */
+.detail-not-found {
+  text-align: center;
+  padding: 6rem 2rem;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .detail-page {
+    padding: 3rem 1.5rem 4rem;
+  }
+
+  .detail-title {
+    font-size: clamp(1.75rem, 7vw, 3.2rem);
+  }
+
+  .detail-links {
+    gap: 0.5rem;
+  }
+
+  .detail-meta {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .detail-tools-pills {
+    flex-direction: row;
+    flex-wrap: wrap;
+    min-width: unset;
+  }
+
+  .detail-step {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+
+  .detail-retro-body {
+    padding: 1.2rem 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .detail-link-btn {
+    font-size: 0.74rem;
+    padding: 0.58rem 1.1rem;
+  }
+}
