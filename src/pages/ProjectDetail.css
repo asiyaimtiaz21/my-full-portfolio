@@ -1,317 +1,958 @@
-.detail-page {
-  background-color: var(--bg-cream);
-  min-height: calc(100vh - 62px);
-  padding: var(--space-xl) var(--space-md) var(--space-2xl);
+/* ═══════════════════════════════════════════════════════
+   CASE STUDY PAGE
+   Two modes:
+   • Rich  (Nova) — editorial, visually led, cinematic
+   • Basic (others) — cleaner fallback, same token system
+═══════════════════════════════════════════════════════ */
+
+.cs-page {
+  background-color: var(--ground);
 }
 
-.detail-inner {
-  max-width: 860px;
+/* ── Shared container ─────────────────────────────────── */
+.cs-container {
+  max-width: var(--container-lg);
   margin: 0 auto;
+  padding: 0 var(--space-10);
 }
 
-/* ── Back link ── */
-.detail-back {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
+/* ── Section rhythm ───────────────────────────────────── */
+.cs-section {
+  padding: var(--space-12) 0;
+}
+
+/* Alternating band — subtle background shift creates rhythm */
+.cs-band {
+  background-color: var(--ground-subtle);
+}
+
+/* Eyebrow that floats above a section's content */
+.cs-section-eyebrow {
+  display: block;
+  margin-bottom: var(--space-6);
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   RICH LAYOUT — HERO
+   Full-bleed image. Title anchored at the bottom,
+   set against a gradient scrim.
+═══════════════════════════════════════════════════════ */
+.cs-hero {
+  position: relative;
+  height: 72vh;
+  min-height: 440px;
+  max-height: 840px;
+  overflow: hidden;
+}
+
+.cs-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  animation: revealFade 1.2s var(--ease-out) both;
+}
+
+/* Bottom-weighted scrim — legibility without obscuring image */
+.cs-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(26, 21, 16, 0.82) 0%,
+    rgba(26, 21, 16, 0.18) 42%,
+    transparent 62%
+  );
+}
+
+/* Back link — top left, light so it reads over image */
+.cs-nav-back {
+  position: absolute;
+  top: var(--space-6);
+  left: var(--space-10);
+  z-index: 2;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: rgba(242, 237, 230, 0.60);
   text-decoration: none;
-  margin-bottom: 2.5rem;
-  transition: color var(--transition-fast);
+  transition: color var(--dur-fast) var(--ease-out);
+  animation: revealFade var(--dur-slow) var(--ease-out) 0.5s both;
 }
 
-.detail-back:hover {
-  color: var(--primary);
+.cs-nav-back:hover {
+  color: var(--ground);
 }
 
-/* ── Header ── */
-.detail-category {
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
+/* Title block — bottom of hero */
+.cs-hero-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-10) var(--space-10);
+  z-index: 2;
+  animation: revealUp var(--dur-reveal) var(--ease-out) 0.2s both;
+}
+
+.cs-hero-eyebrow {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--primary);
-  margin: 0 0 0.75rem;
-  animation: fadeUp 0.5s ease both;
+  color: rgba(242, 237, 230, 0.55);
+  margin-bottom: var(--space-3);
 }
 
-.detail-title {
-  font-family: var(--font-serif);
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  font-weight: 700;
-  color: var(--text-dark);
+.cs-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, var(--text-5xl));
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: var(--ground);
+  margin: 0;
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   META STRIP — film credit block
+   Reads like: Discipline  Role  Year  Duration  Tools
+═══════════════════════════════════════════════════════ */
+.cs-meta-strip {
+  border-bottom: 1px solid var(--border);
+  padding: var(--space-5) 0;
+  animation: revealFade var(--dur-slow) var(--ease-out) 0.45s both;
+}
+
+.cs-meta-inner {
+  max-width: var(--container-lg);
+  margin: 0 auto;
+  padding: 0 var(--space-10);
+  display: flex;
+  gap: var(--space-10);
+  flex-wrap: wrap;
+}
+
+.cs-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.cs-meta-label {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+}
+
+.cs-meta-value {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--ink-2);
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   OVERVIEW
+   Lead paragraph — slightly larger body copy.
+═══════════════════════════════════════════════════════ */
+.cs-overview-text {
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  line-height: 1.85;
+  color: var(--ink-2);
+  max-width: 66ch;
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   THE PROBLEM — asymmetric 2-column split
+   Label on left (25%), problem statement on right (75%).
+   Display type makes the statement feel like an argument,
+   not a paragraph.
+═══════════════════════════════════════════════════════ */
+.cs-problem-grid {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+.cs-problem-label-col {
+  padding-top: 5px; /* align eyebrow baseline with first text line */
+}
+
+.cs-problem-text {
+  font-family: var(--font-display);
+  font-size: clamp(1.375rem, 2.5vw, var(--text-2xl));
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0;
+  letter-spacing: -0.005em;
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   RESEARCH INSIGHTS — three numbered cards
+   Large italic numbers = editorial magazine issue counts.
+   Cards separate via top border, no rounded corners.
+═══════════════════════════════════════════════════════ */
+.cs-insights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.cs-insight {
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--border-strong);
+}
+
+.cs-insight-number {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, var(--text-4xl));
+  font-weight: 300;
+  font-style: italic;
+  color: var(--ink-4);
+  line-height: 1;
+  margin-bottom: var(--space-4);
+  letter-spacing: -0.02em;
+}
+
+.cs-insight-label {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 var(--space-3);
+  line-height: 1.2;
+}
+
+.cs-insight-body {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  line-height: 1.8;
+  color: var(--ink-3);
+  margin: 0;
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   PROCESS / APPROACH — tabular rows
+   Three-column: number | step name | detail.
+   Each row reads like a table without being one.
+═══════════════════════════════════════════════════════ */
+.cs-steps {
+  display: flex;
+  flex-direction: column;
+}
+
+.cs-step {
+  display: grid;
+  grid-template-columns: 56px 1fr 3fr;
+  gap: 0 var(--space-6);
+  padding: var(--space-6) 0;
+  border-top: 1px solid var(--border);
+  align-items: baseline;
+}
+
+.cs-step:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+.cs-step-num {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--ink-4);
+  line-height: 1.3;
+}
+
+.cs-step-name {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.cs-step-detail {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  line-height: 1.8;
+  color: var(--ink-3);
+  margin: 0;
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   KEY DECISIONS — before / after format
+   Title = the chosen direction.
+   "vs." label = what was rejected.
+   Annotation = why.
+═══════════════════════════════════════════════════════ */
+.cs-decisions {
+  display: flex;
+  flex-direction: column;
+}
+
+.cs-decision {
+  padding: var(--space-6) 0;
+  border-top: 1px solid var(--border);
+}
+
+.cs-decision:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+.cs-decision-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-5);
+  margin-bottom: var(--space-4);
+}
+
+.cs-decision-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.375rem, 2vw, var(--text-2xl));
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0;
   line-height: 1.1;
-  margin: 0 0 1.5rem;
-  animation: fadeUp 0.5s ease 0.08s both;
+  letter-spacing: -0.01em;
 }
 
-/* ── External link buttons ── */
-.detail-links {
+/* "vs. Hamburger menu" — faded, reads as the rejected path */
+.cs-decision-versus {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--ink-4);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.cs-decision-annotation {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.8;
+  color: var(--ink-3);
+  margin: 0;
+  max-width: 76ch;
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   PROTOTYPE CTA — centered invitation
+   Deliberately minimal. The pause before clicking.
+═══════════════════════════════════════════════════════ */
+.cs-cta-section {
+  padding: var(--space-16) 0;
+}
+
+.cs-cta-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-3);
+}
+
+.cs-cta-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, var(--text-3xl));
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.cs-cta-sub {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--ink-3);
+  margin: 0 0 var(--space-5);
+}
+
+.cs-cta-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.65rem;
-  margin-bottom: 2.5rem;
-  animation: fadeUp 0.5s ease 0.12s both;
+  gap: var(--space-3);
+  justify-content: center;
 }
 
-.detail-link-btn {
+
+/* ═══════════════════════════════════════════════════════
+   REFLECTION — personal, measured
+   No decorative blockquote bar. The content speaks.
+═══════════════════════════════════════════════════════ */
+.cs-reflection {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.95;
+  color: var(--ink-2);
+  margin: 0;
+  padding: 0;
+  border: none;
+  max-width: 76ch;
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   FOOTER LINK
+   Same pattern as homepage — large italic invitation.
+═══════════════════════════════════════════════════════ */
+.cs-footer {
+  border-top: 1px solid var(--border);
+  padding: var(--space-8) var(--space-10);
+}
+
+.cs-footer-link {
   display: inline-flex;
   align-items: center;
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
+  gap: var(--space-4);
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, var(--text-2xl));
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink);
   text-decoration: none;
-  padding: 0.65rem 1.4rem;
-  border-radius: var(--radius-pill);
-  transition:
-    background var(--transition-fast),
-    color var(--transition-fast),
-    transform var(--transition-fast),
-    box-shadow var(--transition-fast);
+  letter-spacing: -0.01em;
+  transition: color var(--dur-fast) var(--ease-out);
 }
 
-.detail-link-btn:hover {
-  transform: translateY(-2px);
+.cs-footer-link:hover {
+  color: var(--accent);
 }
 
-.detail-link-primary {
-  background: var(--gradient-primary);
-  color: #fff;
-  box-shadow: 0 4px 16px rgba(194, 123, 160, 0.3);
+.cs-footer-arrow {
+  font-style: normal;
+  font-family: var(--font-body);
+  font-size: var(--text-xl);
+  line-height: 1;
+  transition: transform var(--dur-base) var(--ease-out);
 }
 
-.detail-link-primary:hover {
-  box-shadow: 0 8px 24px rgba(194, 123, 160, 0.42);
+.cs-footer-link:hover .cs-footer-arrow {
+  transform: translateX(8px);
 }
 
-.detail-link-outline {
-  background-color: transparent;
-  color: var(--primary);
-  border: 2px solid var(--primary);
+
+/* ═══════════════════════════════════════════════════════
+   BASIC DETAIL — cleaner fallback for other projects
+═══════════════════════════════════════════════════════ */
+.cs-basic-header {
+  padding: var(--space-10) 0 var(--space-8);
+  border-bottom: 1px solid var(--border);
 }
 
-.detail-link-outline:hover {
-  background: var(--gradient-primary);
-  color: #fff;
-  border-color: transparent;
+.cs-basic-back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  text-decoration: none;
+  margin-bottom: var(--space-6);
+  transition: color var(--dur-fast) var(--ease-out);
 }
 
-.detail-link-ghost {
-  background-color: transparent;
-  color: var(--text-muted);
-  border: 1.5px solid var(--border-muted);
+.cs-basic-back:hover {
+  color: var(--ink);
 }
 
-.detail-link-ghost:hover {
-  color: var(--text-dark);
-  border-color: var(--text-muted);
+.cs-basic-eyebrow {
+  display: block;
+  margin-bottom: var(--space-3);
 }
 
-/* ── Hero image ── */
-.detail-image {
+.cs-basic-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, var(--text-3xl));
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.cs-basic-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.cs-basic-img-wrap {
+  overflow: hidden;
+  background-color: var(--ground-subtle);
+}
+
+.cs-basic-img {
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  border-radius: var(--radius-lg);
   display: block;
-  background-color: var(--bg-warm);
-  margin-bottom: 3rem;
-  box-shadow: var(--shadow-md);
-  animation: fadeUp 0.5s ease 0.16s both;
 }
 
-/* ── Meta row: description + tools ── */
-.detail-meta {
+.cs-basic-meta {
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: 3rem;
-  margin-bottom: 3.5rem;
-  padding-bottom: 3.5rem;
-  border-bottom: var(--border-muted);
+  gap: var(--space-10);
+  align-items: start;
 }
 
-.detail-description {
-  font-family: var(--font-sans);
-  font-size: 1.05rem;
+.cs-basic-description {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
   line-height: 1.85;
-  color: var(--text-body);
+  color: var(--ink-2);
+  margin: 0;
 }
 
-.detail-tools h3 {
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--primary);
-  margin: 0 0 0.85rem;
+.cs-basic-tools > .eyebrow {
+  display: block;
+  margin-bottom: var(--space-3);
 }
 
-/* Tool pills */
-.detail-tools-pills {
+.cs-tool-chips {
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
-  min-width: 130px;
+  gap: var(--space-2);
 }
 
-.detail-tool-pill {
-  display: inline-block;
-  font-family: var(--font-sans);
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--text-body);
-  background-color: var(--bg-section);
-  border: var(--border-muted);
-  padding: 0.32rem 0.8rem;
-  border-radius: var(--radius-pill);
+.cs-tool-chip {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: var(--ink-3);
+  background-color: var(--ground-subtle);
+  border: 1px solid var(--border);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-sm);
   white-space: nowrap;
   text-align: center;
 }
 
-/* ── Design Process ── */
-.detail-process h2 {
-  font-family: var(--font-serif);
-  font-size: 1.65rem;
-  font-weight: 600;
-  font-style: italic;
-  color: var(--text-dark);
-  margin: 0 0 2rem;
+
+/* ═══════════════════════════════════════════════════════
+   LOGO SHOWCASE — four-variant grid for logo projects
+   Each swatch carries its own contextual background
+   (dark for white variant, white for black, etc.)
+═══════════════════════════════════════════════════════ */
+.cs-logo-showcase-section {
+  padding-top: var(--space-6);
 }
 
-.detail-steps {
+.cs-logo-showcase {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.cs-logo-swatch {
+  overflow: hidden;
+}
+
+.cs-logo-img-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  padding: var(--space-8);
+}
+
+.cs-logo-img-wrap img {
+  max-width: 70%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+.cs-logo-swatch:hover .cs-logo-img-wrap img {
+  transform: scale(1.06);
+}
+
+.cs-logo-swatch-label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  padding: var(--space-3) var(--space-4) var(--space-4);
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 720px) {
+  .cs-logo-showcase {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 420px) {
+  .cs-logo-showcase {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2);
+  }
+
+  .cs-logo-img-wrap {
+    padding: var(--space-5);
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   GALLERY GRID — book cover / image series
+═══════════════════════════════════════════════════════ */
+.cs-gallery-section {
+  padding-top: var(--space-6);
+}
+
+.cs-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.cs-gallery-item {
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  background-color: var(--ground-subtle);
+}
+
+.cs-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+.cs-gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+@media (max-width: 960px) {
+  .cs-gallery-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-2);
+  }
+}
+
+@media (max-width: 640px) {
+  .cs-gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   LIGHTBOX
+   Full-screen dark overlay with centered image preview.
+   Navigation: arrow buttons + keyboard ← → Esc.
+═══════════════════════════════════════════════════════ */
+.lb-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  background-color: rgba(26, 21, 16, 0.94);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  animation: revealFade 180ms var(--ease-out) both;
+}
+
+.lb-content {
+  position: relative;
+  max-width: min(88vw, 960px);
+  max-height: 88vh;
   display: flex;
   flex-direction: column;
-  gap: 0;
+  align-items: center;
+  cursor: default;
+  border-radius: var(--radius-md);
+  overflow: hidden;
 }
 
-.detail-step {
-  display: grid;
-  grid-template-columns: 140px 1fr;
-  gap: 1.5rem;
-  padding: 1.5rem 0;
-  border-top: var(--border-muted);
-}
-
-.detail-step:last-child {
-  border-bottom: var(--border-muted);
-}
-
-.detail-step-label {
-  font-family: var(--font-sans);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--primary);
-  padding-top: 2px;
-}
-
-.detail-step-text {
-  font-family: var(--font-sans);
-  font-size: 0.95rem;
-  line-height: 1.8;
-  color: var(--text-body);
-}
-
-/* ── Retrospective ── */
-.detail-retrospective {
-  margin-top: 4rem;
-  padding-top: 3.5rem;
-  border-top: var(--border-muted);
-}
-
-.detail-retro-header {
-  margin-bottom: 1.5rem;
-}
-
-.detail-retro-eyebrow {
+.lb-img {
   display: block;
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--primary);
-  margin-bottom: 0.6rem;
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
 }
 
-.detail-retro-title {
-  font-family: var(--font-serif);
-  font-size: 1.65rem;
+.lb-caption {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
   font-weight: 600;
-  font-style: italic;
-  color: var(--text-dark);
-  margin: 0;
-}
-
-.detail-retro-body {
-  margin: 0;
-  padding: 1.5rem 1.75rem;
-  background: linear-gradient(135deg, var(--bg-warm) 0%, var(--bg-section) 100%);
-  border-left: 3px solid var(--primary);
-  border-radius: 0 var(--radius-md) var(--radius-md) 0;
-  font-family: var(--font-sans);
-  font-size: 1rem;
-  line-height: 1.9;
-  color: var(--text-body);
-  font-style: normal;
-}
-
-/* ── Not found ── */
-.detail-not-found {
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
   text-align: center;
-  padding: 6rem 2rem;
-  color: var(--text-muted);
-  font-family: var(--font-sans);
+  padding: var(--space-3) var(--space-4) var(--space-4);
+  border-top: 1px solid var(--border);
+  margin: 0;
+  background-color: inherit;
 }
 
-/* ── Responsive ── */
+/* Close button */
+.lb-close {
+  position: fixed;
+  top: var(--space-5);
+  right: var(--space-5);
+  z-index: 901;
+  background: none;
+  border: none;
+  color: rgba(242, 237, 230, 0.55);
+  font-size: 2.25rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: var(--space-2) var(--space-3);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.lb-close:hover { color: var(--ground); }
+
+/* Prev / Next arrows */
+.lb-prev,
+.lb-next {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 901;
+  background: none;
+  border: none;
+  color: rgba(242, 237, 230, 0.45);
+  font-size: 3.5rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: var(--space-4) var(--space-5);
+  transition: color var(--dur-fast) var(--ease-out);
+  user-select: none;
+}
+
+.lb-prev { left: 0; }
+.lb-next { right: 0; }
+
+.lb-prev:hover,
+.lb-next:hover { color: var(--ground); }
+
+/* Counter */
+.lb-counter {
+  position: fixed;
+  bottom: var(--space-5);
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  color: rgba(242, 237, 230, 0.38);
+  pointer-events: none;
+}
+
+/* ── Button resets for clickable gallery / logo tiles ── */
+.cs-gallery-item,
+.cs-logo-swatch {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  text-align: left;
+  cursor: zoom-in;
+}
+
+/* Gallery item inherits its bg from the existing rule;
+   logo swatch bg comes from the inline style */
+.cs-gallery-item { background: none; }
+
 @media (max-width: 640px) {
-  .detail-page {
-    padding: 3rem 1.5rem 4rem;
+  .lb-prev { left: 0; padding: var(--space-3); }
+  .lb-next { right: 0; padding: var(--space-3); }
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   NOT FOUND
+═══════════════════════════════════════════════════════ */
+.cs-not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 64px);
+  gap: var(--space-4);
+  font-family: var(--font-body);
+  color: var(--ink-3);
+  text-align: center;
+}
+
+.cs-not-found a {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════ */
+@media (max-width: 960px) {
+  .cs-container {
+    padding: 0 var(--space-8);
   }
 
-  .detail-title {
-    font-size: clamp(1.75rem, 7vw, 3.2rem);
+  .cs-meta-inner {
+    padding: 0 var(--space-8);
+    gap: var(--space-8);
   }
 
-  .detail-links {
-    gap: 0.5rem;
+  .cs-footer {
+    padding: var(--space-8) var(--space-8);
   }
 
-  .detail-meta {
+  .cs-nav-back {
+    left: var(--space-8);
+  }
+
+  .cs-hero-text {
+    padding: var(--space-8) var(--space-8);
+  }
+
+  /* Problem: narrow label column */
+  .cs-problem-grid {
+    grid-template-columns: 100px 1fr;
+    gap: var(--space-6);
+  }
+
+  /* Steps: tighten name column */
+  .cs-step {
+    grid-template-columns: 48px 1fr 2fr;
+    gap: 0 var(--space-5);
+  }
+
+  .cs-insights-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .cs-hero {
+    height: 56vh;
+    min-height: 360px;
+  }
+
+  .cs-hero-title {
+    font-size: clamp(2rem, 9vw, 3rem);
+  }
+
+  .cs-hero-text {
+    padding: var(--space-6) var(--space-5);
+  }
+
+  .cs-nav-back {
+    top: var(--space-5);
+    left: var(--space-5);
+  }
+
+  .cs-container {
+    padding: 0 var(--space-5);
+  }
+
+  .cs-meta-inner {
+    padding: 0 var(--space-5);
+    gap: var(--space-5);
+  }
+
+  .cs-section {
+    padding: var(--space-8) 0;
+  }
+
+  .cs-footer {
+    padding: var(--space-6) var(--space-5);
+  }
+
+  /* Problem: stack on mobile */
+  .cs-problem-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: var(--space-4);
   }
 
-  .detail-tools-pills {
+  .cs-problem-text {
+    font-size: clamp(1.25rem, 5.5vw, 1.5rem);
+  }
+
+  /* Insights: single column */
+  .cs-insights-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  /* Steps: num + name on one row, detail spans below */
+  .cs-step {
+    grid-template-columns: 40px 1fr;
+    grid-template-rows: auto auto;
+    gap: var(--space-2) var(--space-4);
+    padding: var(--space-5) 0;
+  }
+
+  .cs-step-detail {
+    grid-column: 1 / -1;
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--border);
+  }
+
+  /* Decisions: stack head */
+  .cs-decision-head {
+    flex-direction: column;
+    gap: var(--space-2);
+    align-items: flex-start;
+  }
+
+  /* CTA */
+  .cs-cta-section {
+    padding: var(--space-12) 0;
+  }
+
+  /* Basic meta: stack */
+  .cs-basic-meta {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .cs-tool-chips {
     flex-direction: row;
     flex-wrap: wrap;
-    min-width: unset;
-  }
-
-  .detail-step {
-    grid-template-columns: 1fr;
-    gap: 0.4rem;
-  }
-
-  .detail-retro-body {
-    padding: 1.2rem 1.25rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .detail-link-btn {
-    font-size: 0.74rem;
-    padding: 0.58rem 1.1rem;
   }
 }

@@ -1,215 +1,865 @@
-/* ── Hero ── */
-.hero {
-  min-height: calc(100vh - 62px);
-  min-height: calc(100svh - 62px); /* iOS Safari: excludes shifting URL bar */
+/* ═══════════════════════════════════════════════════════════════
+   HOME — CINEMATIC EDITORIAL
+   Every section has a distinct compositional logic.
+   Type is architecture. Silence is pacing. Work is the hero.
+═══════════════════════════════════════════════════════════════ */
+
+
+/* ═══════════════════════════════════════════════════════════════
+   1. HERO
+   Full-viewport grid composition.
+
+   Grid anatomy:
+     Column 1 (57%): typography zone — two words at extreme scale
+     Column 2 (43%): image zone — project image, full height
+     Row 1 (1fr):    main content
+     Row 2 (auto):   baseline strip — the signature
+
+   The image occupies both rows (grid-row: 1 / 3), so it towers
+   from the top of the viewport to the bottom of the baseline.
+   The type is bottom-aligned, leaving negative space above —
+   the visitor's eye falls DOWN into the words and across INTO
+   the work. The image meets them there.
+═══════════════════════════════════════════════════════════════ */
+
+.h-hero {
+  display: grid;
+  grid-template-columns: 57% 43%;
+  grid-template-rows: 1fr auto;
+  height: calc(100vh - 64px);
+  height: calc(100svh - 64px);
+  min-height: 520px;
+  overflow: hidden;
+}
+
+/* ── Left column ─────────────────────────────────────────────── */
+.h-hero-left {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: var(--space-12) var(--space-10) var(--space-8) var(--space-10);
+}
+
+/* Small contextual index line — barely there above the type */
+.h-hero-index {
   display: flex;
   align-items: center;
-  padding: 0 var(--space-md);
-  background: var(--gradient-hero);
+  gap: var(--space-3);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  color: var(--ink-4);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0 0 var(--space-6);
+  animation: revealFade var(--dur-slow) var(--ease-out) 0ms both;
+}
+
+.h-hero-index-rule {
+  display: block;
+  flex: 1;
+  height: 1px;
+  background-color: var(--border);
+  max-width: 4rem;
+}
+
+/* ── The type — architectural, not decorative ────────────────── */
+.h-tagline {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--space-5);
+}
+
+/* Two words. Each word is a structural element.
+   At 11vw on a 1440px screen = ~158px per line.
+   The combined block defines the visual gravity of the page. */
+.h-tagline-line {
+  font-family: var(--font-display);
+  font-size: clamp(3.75rem, 11vw, 10rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 0.90;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  display: block;
+}
+
+.h-tagline-line--1 {
+  animation: revealUp var(--dur-reveal) var(--ease-out) 60ms both;
+}
+
+.h-tagline-line--2 {
+  animation: revealUp var(--dur-reveal) var(--ease-out) 180ms both;
+}
+
+/* Disciplines — just below the type, minimal, letter-spaced */
+.h-disciplines {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: var(--ink-3);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0;
+  animation: revealUp var(--dur-slow) var(--ease-out) 300ms both;
+  padding-top: 2em;
+}
+
+.h-disc-dot {
+  color: var(--ink-4);
+  font-size: 8px;
+  line-height: 1;
+}
+
+/* Statement — small body text below the disciplines line */
+.h-hero-statement {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+;
+  line-height: 1.7;
+  color: var(--ink-3);
+  max-width: 36ch;
+  margin: var(--space-5) 0 0;
+  animation: revealUp var(--dur-slow) var(--ease-out) 380ms both;
+}
+
+.h-hero-statement em {
+  font-style: italic;
+  color: var(--ink-2);
+}
+
+/* ── Right column — portrait introduction ────────────────────── */
+/* Spans both grid rows. Centered portrait with double-ring
+   border that reads clearly against the warm cream ground. */
+.h-hero-portrait {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  border-left: 1px solid var(--border);
+  padding: var(--space-4) var(--space-5);
+  animation: revealFade 1.6s var(--ease-out) 120ms both;
+}
+
+/* Circle crop with double-ring border:
+   inner ink ring → cream gap → soft outer ring */
+.h-hero-portrait-ring {
+  width: 88%;
+  max-width: 560px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow:
+    0 0 0 2.5px var(--ink),
+    0 0 0 10px var(--ground),
+    0 0 0 11.5px var(--border-strong);
+}
+
+/* Scale up inside the circle to zoom in; shift origin downward
+   so the image is cropped toward the bottom-center */
+.h-hero-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 65%;
+  display: block;
+  transform: scale(1.55);
+  transform-origin: center 65%;
+}
+
+.h-hero-portrait-name {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.6vw, var(--text-lg));
+  font-weight: 300;
+  font-style: italic;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+  margin: 0;
+  text-align: center;
+}
+
+/* ── Baseline strip — bottom of the left column ─────────────── */
+/* Sits in grid-row: 2. The image continues behind/beside it,
+   reinforcing that the image "owns" the full height. */
+.h-hero-baseline {
+  grid-column: 1;
+  grid-row: 2;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: var(--space-4) var(--space-10);
+  border-top: 1px solid var(--border);
+  animation: revealFade var(--dur-slow) var(--ease-out) 380ms both;
+}
+
+.h-baseline-name {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+  flex-shrink: 0;
+}
+
+.h-baseline-sep {
+  display: block;
+  flex: 1;
+  height: 1px;
+  background-color: var(--border);
+  margin: 0 var(--space-5);
+}
+
+.h-baseline-avail {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  color: var(--ink-4);
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   2. WORK INDEX
+   An editorial list of 4 projects. Hovering a row causes the
+   project's image to ghost-in behind the text — the work is
+   always present, even when not displayed at full scale.
+
+   The large '04' numeral is a barely-visible background element
+   — atmospheric depth, not decoration. It's clipped by the
+   section's overflow:hidden, which makes it look even better.
+═══════════════════════════════════════════════════════════════ */
+
+.h-index {
+  padding: var(--space-10) var(--space-10) var(--space-12);
+  border-top: 1px solid var(--border);
   position: relative;
   overflow: hidden;
 }
 
-/* Soft decorative blobs */
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -120px;
-  right: -80px;
-  width: 520px;
-  height: 520px;
-  background: radial-gradient(circle, rgba(184, 169, 217, 0.22) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
+/* Flex row: list column (left) + preview column (right).
+   They are siblings in separate flex items — no overlap is possible. */
+.h-index-body {
+  display: flex;
+  align-items: stretch;
 }
 
-.hero::after {
-  content: '';
+/* Ghost numeral — monumental scale, barely visible */
+.h-index-ghost {
   position: absolute;
-  bottom: -80px;
-  left: -60px;
-  width: 380px;
-  height: 380px;
-  background: radial-gradient(circle, rgba(242, 201, 178, 0.2) 0%, transparent 70%);
-  border-radius: 50%;
+  right: -0.05em;
+  bottom: -0.15em;
+  font-family: var(--font-display);
+  font-size: clamp(10rem, 22vw, 22rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1;
+  color: var(--ink);
+  opacity: 0.045;
   pointer-events: none;
+  user-select: none;
+  z-index: 0;
 }
 
-.hero-content {
-  max-width: 680px;
-  margin: 0 auto;
+.h-index-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--border);
   position: relative;
   z-index: 1;
 }
 
-.hero-eyebrow {
-  font-family: var(--font-sans);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--primary);
-  margin: 0 0 var(--space-sm);
-  animation: fadeUp 0.5s ease both;
+.h-index-total {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--ink-4);
+  letter-spacing: 0.12em;
 }
 
-.hero-divider {
-  width: 40px;
-  height: 2px;
-  background: var(--gradient-primary);
-  border-radius: var(--radius-pill);
-  margin-bottom: 1.25rem;
-  animation: fadeUp 0.5s ease 0.05s both;
+/* Left flex column — strictly 58% wide, list lives here only */
+.h-index-list {
+  flex: 0 0 58%;
+  position: relative;
+  z-index: 1;
 }
 
-.hero-name {
-  font-family: var(--font-serif);
-  font-size: clamp(2.2rem, 8vw, 4.5rem);
-  font-weight: 700;
-  color: var(--text-dark);
-  line-height: 1.08;
-  letter-spacing: 0.01em;
-  margin-bottom: 1.5rem;
-  animation: fadeUp 0.5s ease 0.1s both;
+/* Right flex column — preview lives here, never touches the list */
+.h-index-preview {
+  flex: 1 1 42%;
+  position: relative;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 600ms var(--ease-out);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 160px;
 }
 
-.hero-subtitle {
-  font-family: var(--font-sans);
-  font-size: 1.06rem;
-  font-weight: 400;
-  line-height: 1.82;
-  color: var(--text-body);
-  max-width: 460px;
-  margin-bottom: 2.75rem;
-  animation: fadeUp 0.5s ease 0.2s both;
+/* Soft gradient dissolving the preview into the page at its left edge */
+.h-index-preview::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    #F2EDE6 0%,
+    rgba(242, 237, 230, 0.30) 20%,
+    transparent 46%
+  );
+  pointer-events: none;
 }
 
-.hero-buttons {
-  display: flex;
-  gap: var(--space-sm);
-  flex-wrap: wrap;
-  animation: fadeUp 0.5s ease 0.3s both;
+.h-index-preview.is-visible {
+  opacity: 1;
 }
 
-/* ── Hero buttons ── */
-.btn {
-  display: inline-block;
-  padding: 0.78rem 1.8rem;
-  border-radius: var(--radius-pill);
-  font-family: var(--font-sans);
-  font-size: 0.88rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+/* Each project row */
+.h-index-item {
+  display: grid;
+  grid-template-columns: 2.75rem 1fr auto 1.75rem;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-5) 0 var(--space-5) var(--space-3);
+  border-bottom: 1px solid var(--border);
   text-decoration: none;
-  transition:
-    background-color var(--transition-base),
-    color var(--transition-base),
-    transform var(--transition-base),
-    box-shadow var(--transition-base);
-}
-
-.btn:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-}
-
-.btn-primary {
-  background: var(--gradient-primary);
-  color: #fff;
-  box-shadow: 0 4px 16px rgba(194, 123, 160, 0.3);
-}
-
-.btn-primary:hover {
-  box-shadow: 0 8px 24px rgba(194, 123, 160, 0.42);
-}
-
-.btn-outline {
-  background-color: transparent;
-  color: var(--primary);
-  border: 2px solid var(--primary);
-}
-
-.btn-outline:hover {
-  background: var(--gradient-primary);
-  color: #fff;
-  border-color: transparent;
-}
-
-/* ── About Preview ── */
-.about-preview {
-  background: linear-gradient(160deg, var(--bg-warm) 0%, var(--bg-section) 100%);
-  padding: var(--space-xl) var(--space-md);
+  color: inherit;
   position: relative;
 }
 
-.about-preview::before {
+/* Accent bar — grows from bottom on hover */
+.h-index-item::before {
   content: '';
-  display: block;
-  width: 48px;
-  height: 2px;
-  background: var(--gradient-primary);
-  border-radius: var(--radius-pill);
   position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  top: 15%;
+  bottom: 15%;
+  width: 1.5px;
+  background-color: var(--accent);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 280ms var(--ease-out);
 }
 
-.about-preview-content {
-  max-width: 680px;
-  margin: 0 auto;
+.h-index-item:hover::before {
+  transform: scaleY(1);
 }
 
-.about-preview-content h2 {
-  font-family: var(--font-serif);
-  font-size: clamp(1.8rem, 3.5vw, 2.2rem);
-  font-weight: 600;
+.h-idx-num {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  color: var(--ink-4);
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+.h-idx-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.h-idx-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.125rem, 1.7vw, 1.5rem);
+  font-weight: 400;
   font-style: italic;
-  color: var(--text-dark);
-  margin-bottom: 1.25rem;
+  color: var(--ink);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.h-index-item:hover .h-idx-title {
+  color: var(--accent);
+}
+
+.h-idx-tagline {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--ink-3);
+  line-height: 1.5;
   letter-spacing: 0.01em;
 }
 
-.about-preview-content p {
-  font-family: var(--font-sans);
-  font-size: 1rem;
-  line-height: 1.85;
-  color: var(--text-body);
-  margin-bottom: 2.25rem;
-  max-width: 540px;
+.h-idx-cat {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  color: var(--ink-3);
+  letter-spacing: 0.04em;
+  text-align: right;
+  white-space: nowrap;
 }
 
-/* ── Responsive ── */
+.h-idx-arrow {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--ink-4);
+  line-height: 1;
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    color    var(--dur-fast) var(--ease-out);
+}
+
+.h-index-item:hover .h-idx-arrow {
+  transform: translateX(5px);
+  color: var(--accent);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   3. STATEMENT
+   One sentence at display scale. No heading. No section label.
+   Just the position, stated plainly. The word "obvious." is the
+   only accent color on the page above the fold.
+═══════════════════════════════════════════════════════════════ */
+
+.h-statement {
+  padding: var(--space-16) var(--space-10) var(--space-20);
+  border-top: 1px solid var(--border);
+}
+
+.h-stat-text {
+  font-family: var(--font-display);
+  font-size: clamp(1.875rem, 3.75vw, 3.75rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.22;
+  color: var(--ink);
+  margin: 0 0 var(--space-8);
+  max-width: 22ch;
+}
+
+/* The accent word — earned scarcity */
+.h-stat-text em {
+  font-style: inherit;
+  color: var(--accent);
+}
+
+.h-stat-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.h-stat-link:hover {
+  color: var(--ink);
+}
+
+.h-stat-link-arrow {
+  display: inline-block;
+  font-style: normal;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.h-stat-link:hover .h-stat-link-arrow {
+  transform: translateX(5px);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   4. PHOTO STRIP
+   Five photographs in an asymmetric horizontal rail.
+   No label that says "photography." The images are evidence
+   of how this designer sees — their presence is the argument.
+
+   Flex ratios create deliberate unevenness — the strip
+   looks composed, not generated.
+   The whole strip breathes together on hover (not individually).
+═══════════════════════════════════════════════════════════════ */
+
+.h-strip {
+  border-top: 1px solid var(--border);
+  padding: var(--space-12) var(--space-10);
+}
+
+.h-strip-rail {
+  display: flex;
+  gap: 6px;
+  height: 340px;
+  margin-bottom: var(--space-5);
+  overflow: hidden;
+}
+
+.h-strip-frame {
+  overflow: hidden;
+  background-color: var(--ground-subtle);
+  flex-shrink: 0;
+}
+
+/* Deliberate asymmetry — each frame has a specific weight */
+.h-strip-frame--1 { flex: 1.40; }
+.h-strip-frame--2 { flex: 0.80; }
+.h-strip-frame--3 { flex: 1.65; }
+.h-strip-frame--4 { flex: 0.85; }
+.h-strip-frame--5 { flex: 1.15; }
+
+.h-strip-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 800ms var(--ease-out);
+}
+
+/* The strip breathes as a collective, not as 5 individual hovers */
+.h-strip-rail:hover .h-strip-frame img {
+  transform: scale(1.04);
+}
+
+.h-strip-foot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+
+.h-strip-caption {
+  font-family: var(--font-display);
+  font-size: clamp(0.875rem, 1.15vw, var(--text-base));
+  font-style: italic;
+  color: var(--ink-3);
+  margin: 0;
+}
+
+.h-strip-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.h-strip-link:hover {
+  color: var(--accent);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   5. CLOSE — the last line of the page
+   A single italic sentence that closes the experience and
+   invites the reader to go further. Not a CTA. An invitation.
+═══════════════════════════════════════════════════════════════ */
+
+.h-close {
+  border-top: 1px solid var(--border);
+  padding: var(--space-8) var(--space-10);
+}
+
+.h-close-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, var(--text-2xl));
+  font-weight: 300;
+  font-style: italic;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.h-close-link:hover {
+  color: var(--accent);
+}
+
+.h-close-arrow {
+  font-style: normal;
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  line-height: 1;
+  color: var(--ink-3);
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.h-close-link:hover .h-close-arrow {
+  transform: translateX(8px);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   COLOR BANDS
+   Three background registers give the page cinematic range:
+     cream  → hero (default ground)
+     ink    → work index + close
+     accent → photo strip
+   All text tokens are re-declared inside the dark bands so no
+   section leaks the wrong color onto the wrong surface.
+═══════════════════════════════════════════════════════════════ */
+
+/* ── Work index — dark ink band ─────────────────────────────── */
+.h-index {
+  background-color: var(--ink);
+  border-top: none;
+}
+
+.h-index .eyebrow,
+.h-index-total {
+  color: rgba(242, 237, 230, 0.45);
+}
+
+.h-index-head {
+  border-bottom-color: rgba(242, 237, 230, 0.10);
+}
+
+.h-index-ghost {
+  color: var(--ground);
+  opacity: 0.032;
+}
+
+.h-index-item {
+  border-bottom-color: rgba(242, 237, 230, 0.08);
+}
+
+.h-idx-num {
+  color: rgba(242, 237, 230, 0.22);
+}
+
+.h-idx-title {
+  color: var(--ground);
+}
+
+.h-index-item:hover .h-idx-title {
+  color: var(--accent);
+}
+
+.h-idx-tagline {
+  color: rgba(242, 237, 230, 0.42);
+}
+
+.h-idx-cat {
+  color: rgba(242, 237, 230, 0.30);
+}
+
+.h-idx-arrow {
+  color: rgba(242, 237, 230, 0.22);
+}
+
+.h-index-item:hover .h-idx-arrow {
+  color: var(--accent);
+}
+
+/* Preview gradient — fades into dark background, not cream */
+.h-index-preview::before {
+  background: linear-gradient(
+    to right,
+    #1A1510 0%,
+    rgba(26, 21, 16, 0.30) 20%,
+    transparent 46%
+  );
+}
+
+/* ── Photo strip — rose accent band ─────────────────────────── */
+.h-strip {
+  background-color: var(--accent-subtle);
+  border-top: none;
+}
+
+/* ── Close — dark ink band ───────────────────────────────────── */
+.h-close {
+  background-color: var(--ink);
+  border-top: none;
+}
+
+.h-close-link {
+  color: var(--ground);
+}
+
+.h-close-link:hover {
+  color: var(--accent);
+}
+
+.h-close-arrow {
+  color: rgba(242, 237, 230, 0.40);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE
+   The hero composition adapts gracefully — on tablet the grid
+   compresses, on mobile the image leads and the type follows.
+═══════════════════════════════════════════════════════════════ */
+
+/* ── Narrow desktop ─────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .h-hero-left {
+    padding-left: var(--space-8);
+    padding-right: var(--space-8);
+  }
+
+  .h-hero-baseline,
+  .h-index,
+  .h-statement,
+  .h-strip,
+  .h-close {
+    padding-left: var(--space-8);
+    padding-right: var(--space-8);
+  }
+}
+
+/* ── Tablet ─────────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .h-hero {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .h-tagline-line {
+    font-size: clamp(2.75rem, 9vw, 5.5rem);
+  }
+
+  /* Hide preview — list expands to full width naturally */
+  .h-index-preview {
+    display: none;
+  }
+
+  .h-index-list {
+    flex: 1 1 100%;
+  }
+
+  /* Category repeats info already in the tagline — hide */
+  .h-idx-cat {
+    display: none;
+  }
+
+  .h-index-item {
+    grid-template-columns: 2.25rem 1fr 1.75rem;
+    gap: var(--space-5);
+  }
+
+  .h-strip-rail {
+    height: 240px;
+  }
+}
+
+/* ── Mobile ─────────────────────────────────────────────── */
 @media (max-width: 640px) {
-  .hero {
-    min-height: unset;  /* don't stretch to full viewport — let content set the height */
-    padding: 3.5rem 1.5rem 3rem;
+
+  /* Stack: image above, type below */
+  .h-hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    height: auto;
+    min-height: 0;
+  }
+
+  /* Portrait comes first on mobile */
+  .h-hero-portrait {
+    grid-column: 1;
+    grid-row: 1;
+    border-left: none;
+    border-bottom: 1px solid var(--border);
+    padding: var(--space-8) var(--space-5);
+    min-height: 300px;
+  }
+
+  .h-hero-portrait-ring {
+    width: min(200px, 55%);
+  }
+
+  .h-hero-left {
+    grid-column: 1;
+    grid-row: 2;
+    justify-content: flex-start;
+    padding: var(--space-8) var(--space-5) var(--space-5);
+  }
+
+  .h-hero-baseline {
+    grid-column: 1;
+    grid-row: 3;
+    padding: var(--space-4) var(--space-5);
+  }
+
+  .h-hero-index {
+    display: none;
+  }
+
+  .h-tagline-line {
+    font-size: clamp(3rem, 13.5vw, 4.5rem);
+  }
+
+  .h-index,
+  .h-statement,
+  .h-strip,
+  .h-close {
+    padding-left: var(--space-5);
+    padding-right: var(--space-5);
+  }
+
+  .h-index {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-10);
+  }
+
+  .h-index-item {
+    grid-template-columns: 2rem 1fr 1.75rem;
+    gap: var(--space-4);
+    padding-left: var(--space-2);
+  }
+
+  .h-statement {
+    padding-top: var(--space-12);
+    padding-bottom: var(--space-12);
+  }
+
+  .h-stat-text {
+    font-size: clamp(1.625rem, 6.5vw, 2.5rem);
+    max-width: none;
+  }
+
+  /* Three photos on mobile — keep odd count for asymmetry */
+  .h-strip-frame--4,
+  .h-strip-frame--5 {
+    display: none;
+  }
+
+  .h-strip-frame--1 { flex: 1.1; }
+  .h-strip-frame--2 { flex: 0.8; }
+  .h-strip-frame--3 { flex: 1.35; }
+
+  .h-strip-rail {
+    height: 180px;
+    gap: 4px;
+  }
+
+  .h-strip-foot {
+    flex-direction: column;
+    gap: var(--space-3);
     align-items: flex-start;
   }
 
-  .hero-subtitle {
-    font-size: 0.97rem;
-    max-width: 100%;
-  }
-
-  .about-preview {
-    padding: var(--space-lg) 1.5rem;
-  }
-}
-
-/* Shrink decorative blobs on small screens so they don't add phantom width */
-@media (max-width: 480px) {
-  .hero::before {
-    width: 280px;
-    height: 280px;
-    top: -60px;
-    right: -60px;
-  }
-  .hero::after {
-    width: 220px;
-    height: 220px;
-    bottom: -40px;
-    left: -40px;
+  .h-close {
+    padding-top: var(--space-5);
+    padding-bottom: var(--space-5);
   }
 }

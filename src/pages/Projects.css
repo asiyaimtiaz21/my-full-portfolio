@@ -1,60 +1,52 @@
+/* ═══════════════════════════════════════════════════════
+   PROJECTS PAGE
+═══════════════════════════════════════════════════════ */
 .projects-page {
-  background-color: var(--bg-cream);
-  min-height: calc(100vh - 62px);
-  padding: var(--space-xl) var(--space-md) var(--space-2xl);
+  min-height: calc(100vh - 64px);
+  min-height: calc(100svh - 64px);
 }
 
-/* ── Header ── */
+/* ── Page header ──────────────────────────────────────── */
 .projects-header {
-  max-width: 1100px;
-  margin: 0 auto var(--space-lg);
+  padding: var(--space-10) var(--space-10) var(--space-8);
+  border-bottom: 1px solid var(--border);
 }
 
-.projects-eyebrow {
-  font-family: var(--font-sans);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--primary);
-  margin: 0 0 0.9rem;
-  animation: fadeUp 0.5s ease both;
+.projects-header .eyebrow {
+  display: block;
+  margin-bottom: var(--space-3);
+  animation: revealUp var(--dur-reveal) var(--ease-out) both;
 }
 
-.projects-header-divider {
-  width: 40px;
-  height: 2px;
-  background: var(--gradient-primary);
-  border-radius: var(--radius-pill);
-  margin-bottom: 1.1rem;
-  animation: fadeUp 0.5s ease 0.05s both;
-}
-
-.projects-header h1 {
-  font-family: var(--font-serif);
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 700;
-  color: var(--text-dark);
-  margin: 0 0 var(--space-sm);
-  line-height: 1.1;
-  animation: fadeUp 0.5s ease 0.1s both;
-}
-
-.projects-header p {
-  font-family: var(--font-sans);
-  font-size: 1rem;
-  line-height: 1.8;
-  color: var(--text-body);
-  max-width: 480px;
+.projects-h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, var(--text-4xl));
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--ink);
   margin: 0;
-  animation: fadeUp 0.5s ease 0.15s both;
+  animation: revealUp var(--dur-reveal) var(--ease-out) 80ms both;
 }
 
-/* ── Filters ── */
+.projects-sub {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.75;
+  color: var(--ink-3);
+  max-width: 52ch;
+  margin: var(--space-3) 0 0;
+  animation: revealUp var(--dur-reveal) var(--ease-out) 160ms both;
+}
+
+/* ── Sticky filter bar ────────────────────────────────── */
 .projects-filters-wrapper {
-  max-width: 1100px;
-  margin: 0 auto 2.5rem;
-  border-bottom: var(--border-muted);
+  position: sticky;
+  top: 64px;
+  z-index: 10;
+  background-color: var(--ground);
+  border-bottom: 1px solid var(--border);
+  padding: 0 var(--space-10);
 }
 
 .projects-filters {
@@ -64,114 +56,637 @@
 }
 
 .filter-tab {
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--ink-4);
   text-decoration: none;
-  padding: 0.7rem 1.3rem;
-  border-bottom: 2.5px solid transparent;
-  transition: color var(--transition-fast), border-color var(--transition-fast);
+  padding: var(--space-4) 0;
+  margin-right: var(--space-6);
+  border-bottom: 1.5px solid transparent;
+  transition:
+    color        var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
 }
 
 .filter-tab:hover {
-  color: var(--text-dark);
+  color: var(--ink-2);
 }
 
 .filter-tab.active {
-  color: var(--primary);
-  border-bottom-color: var(--primary);
+  color: var(--ink);
+  border-bottom-color: var(--accent);
 }
 
-/* ── Filtered view wrapper ── */
-.projects-grid:not(.projects-grouped .projects-grid) {
-  max-width: 1100px;
-  margin: 0 auto;
+/* ── Content area ─────────────────────────────────────── */
+.projects-content {
+  padding: 0 var(--space-10) var(--space-16);
 }
 
-/* ── Empty state ── */
-.projects-empty {
-  max-width: 1100px;
-  margin: 0 auto;
-  font-family: var(--font-sans);
-  font-size: 0.95rem;
-  color: var(--text-muted);
-}
-
-/* ── Grouped sections ── */
+/* ── Grouped view ─────────────────────────────────────── */
 .projects-grouped {
-  max-width: 1100px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: 0;
+  padding-top: var(--space-10);
+}
+
+.projects-section {
+  border-top: 1px solid var(--border-strong);
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-12);
+}
+
+/* No border on the very first or very last outer edge */
+.projects-section:first-child {
+  border-top: none;
+}
+
+/* Gallery/logo entries that open a section have their own border-top
+   which doubles up with the section header above them — remove it */
+.projects-section-header + .gallery-entry,
+.projects-section-header + .logo-entry {
+  border-top: none;
+}
+
+/* Section header row — index | title | count */
+.projects-section-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.projects-section-index {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--ink-4);
+  flex-shrink: 0;
+  line-height: 1;
+  padding-top: 0.5em;
 }
 
 .projects-section-heading {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-family: var(--font-serif);
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--text-dark);
-  text-decoration: none;
-  margin-bottom: 1.5rem;
-  transition: color var(--transition-fast);
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.5vw, var(--text-3xl));
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0;
+  flex: 1;
 }
 
-.projects-section-heading:hover {
-  color: var(--primary);
+.projects-section-heading a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.projects-section-heading a:hover {
+  color: var(--accent);
 }
 
 .projects-section-arrow {
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
   opacity: 0;
   transform: translateX(-4px);
-  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  transition:
+    opacity   var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out);
 }
 
-.projects-section-heading:hover .projects-section-arrow {
+.projects-section-heading a:hover .projects-section-arrow {
   opacity: 1;
-  transform: translateX(0);
+  transform: none;
 }
 
-/* ── Grid ── */
+.projects-section-count {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  flex-shrink: 0;
+  padding-top: 0.5em;
+}
+
+/* Featured project spacing within section */
+.projects-section-featured {
+  margin-bottom: var(--space-8);
+}
+
+/* ── Filtered view ────────────────────────────────────── */
+.projects-filtered {
+  padding-top: var(--space-12);
+}
+
+.projects-filtered .projects-section-featured {
+  margin-bottom: var(--space-8);
+}
+
+/* ── Secondary grid ───────────────────────────────────── */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  gap: var(--space-6);
 }
 
-@media (max-width: 900px) {
+/* ── Empty state ──────────────────────────────────────── */
+.projects-empty {
+  padding: var(--space-10) 0;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--ink-3);
+}
+
+/* ═══════════════════════════════════════════════════════
+   COLOR BANDS
+   Same two-tone system as Home and About.
+   Dark ink header gives the page a cinematic open;
+   the cream filter bar and content area breathe below it.
+═══════════════════════════════════════════════════════ */
+
+/* ── Page header — dark ink ──────────────────────────── */
+.projects-header {
+  background-color: var(--ink);
+  border-bottom: 1px solid rgba(242, 237, 230, 0.08);
+}
+
+.projects-header .eyebrow {
+  color: rgba(242, 237, 230, 0.45);
+}
+
+.projects-h1 {
+  color: var(--ground);
+}
+
+.projects-sub {
+  color: rgba(242, 237, 230, 0.55);
+}
+
+/* Section count — accent colour to add vibrancy in content area */
+.projects-section-count {
+  color: var(--accent);
+}
+
+/* ── Alternating section color bands ─────────────────── */
+
+/* Both colored sections bleed edge-to-edge by cancelling
+   the parent container's horizontal padding, then restoring
+   it as inner padding so content stays aligned. */
+.projects-section:nth-child(2),
+.projects-section:nth-child(3) {
+  margin-left:  calc(-1 * var(--space-10));
+  margin-right: calc(-1 * var(--space-10));
+  padding-left:  var(--space-10);
+  padding-right: var(--space-10);
+}
+
+/* UX / UI Design — dark ink band */
+.projects-section:nth-child(2) {
+  background-color: var(--ink);
+  border-top: none;
+}
+
+.projects-section:nth-child(2) .projects-section-index {
+  color: rgba(242, 237, 230, 0.25);
+}
+
+.projects-section:nth-child(2) .projects-section-heading {
+  color: var(--ground);
+}
+
+.projects-section:nth-child(2) .projects-section-heading a:hover {
+  color: var(--accent);
+}
+
+.projects-section:nth-child(2) .projects-section-count {
+  color: var(--accent);
+}
+
+.projects-section:nth-child(2) .eyebrow {
+  color: rgba(242, 237, 230, 0.40);
+}
+
+.projects-section:nth-child(2) .pc-body {
+  border-top-color: rgba(242, 237, 230, 0.10);
+}
+
+.projects-section:nth-child(2) .pc-title {
+  color: var(--ground);
+}
+
+.projects-section:nth-child(2) .project-card--featured:hover .pc-title,
+.projects-section:nth-child(2) .project-card--secondary:hover .pc-title {
+  color: var(--accent);
+}
+
+.projects-section:nth-child(2) .pc-external {
+  color: rgba(242, 237, 230, 0.45);
+  border-bottom-color: rgba(242, 237, 230, 0.18);
+}
+
+.projects-section:nth-child(2) .pc-external:hover {
+  color: var(--ground);
+  border-bottom-color: rgba(242, 237, 230, 0.50);
+}
+
+.projects-section:nth-child(2) .pc-description {
+  color: rgba(242, 237, 230, 0.45);
+}
+
+/* Graphic Design — rose accent band */
+.projects-section:nth-child(3) {
+  background-color: var(--accent-subtle);
+  border-top: none;
+}
+
+.projects-section:nth-child(3) .projects-section-index {
+  color: var(--ink-2);
+}
+
+.projects-section:nth-child(3) .projects-section-count {
+  color: var(--ink-2);
+}
+
+.projects-section:nth-child(3) .gallery-entry {
+  border-top-color: rgba(181, 96, 110, 0.22);
+}
+
+.projects-section:nth-child(3) .logo-entry {
+  border-top-color: rgba(181, 96, 110, 0.22);
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════ */
+@media (max-width: 960px) {
+  .projects-header {
+    padding: var(--space-8) var(--space-8) var(--space-6);
+  }
+
+  .projects-filters-wrapper {
+    padding: 0 var(--space-8);
+  }
+
+  .projects-content {
+    padding: 0 var(--space-8) var(--space-12);
+  }
+
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-5);
+  }
+
+  .projects-section:nth-child(2),
+  .projects-section:nth-child(3) {
+    margin-left:  calc(-1 * var(--space-8));
+    margin-right: calc(-1 * var(--space-8));
+    padding-left:  var(--space-8);
+    padding-right: var(--space-8);
   }
 }
 
-@media (max-width: 560px) {
-  .projects-page {
-    padding: 3.5rem 1.5rem 4rem;
+@media (max-width: 640px) {
+  .projects-header {
+    padding: var(--space-8) var(--space-5) var(--space-5);
+  }
+
+  .projects-filters-wrapper {
+    padding: 0 var(--space-5);
+    /* Allow scroll if tabs overflow on very small phones */
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .projects-filters-wrapper::-webkit-scrollbar { display: none; }
+
+  .projects-filters {
+    flex-wrap: nowrap;
+    min-width: max-content;
+  }
+
+  .projects-content {
+    padding: 0 var(--space-5) var(--space-10);
+  }
+
+  .projects-grouped {
+    padding-top: var(--space-6);
+  }
+
+  .projects-section:nth-child(2),
+  .projects-section:nth-child(3) {
+    margin-left:  calc(-1 * var(--space-5));
+    margin-right: calc(-1 * var(--space-5));
+    padding-left:  var(--space-5);
+    padding-right: var(--space-5);
+  }
+
+  .projects-section {
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-8);
+  }
+
+  .projects-section-header {
+    margin-bottom: var(--space-6);
+  }
+
+  .projects-filtered {
+    padding-top: var(--space-8);
   }
 
   .projects-grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: var(--space-5);
+  }
+
+  /* Info row stacks on narrow screens */
+  .project-card--featured .pc-body {
+    flex-direction: column;
+    gap: var(--space-3);
+    align-items: flex-start;
+  }
+
+  .project-card--featured .pc-external {
+    align-self: flex-start;
   }
 }
 
-/* Compact filter tabs on small phones */
 @media (max-width: 480px) {
   .filter-tab {
-    font-size: 0.72rem;
-    padding: 0.6rem 0.85rem;
-    letter-spacing: 0.05em;
+    font-size: 0.65rem;
+    margin-right: var(--space-4);
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   GALLERY ENTRY
+   Full-width editorial strip for projects with a
+   gallery array (e.g. book cover series).
+═══════════════════════════════════════════════════════ */
+.gallery-entry {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: var(--space-10);
+  padding: var(--space-10) 0;
+  border-top: 1px solid var(--border);
+  align-items: start;
+  margin-top: var(--space-8);
+}
+
+.gallery-entry-eyebrow {
+  display: block;
+  margin-bottom: var(--space-3);
+}
+
+.gallery-entry-title-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.gallery-entry-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.625rem, 2.5vw, var(--text-3xl));
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0 0 var(--space-4);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.gallery-entry-title-link:hover .gallery-entry-title {
+  color: var(--accent);
+}
+
+.gallery-entry-desc {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  line-height: 1.8;
+  color: var(--ink-3);
+  margin: 0 0 var(--space-5);
+}
+
+.gallery-entry-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.gallery-entry-cta:hover {
+  color: var(--ink);
+}
+
+.gallery-entry-strip {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+}
+
+.gallery-entry-frame {
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  background-color: var(--ground-subtle);
+}
+
+.gallery-entry-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+.gallery-entry-frame:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-entry-frame--dim {
+  opacity: 0.40;
+}
+
+.gallery-entry-count {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  margin: var(--space-3) 0 0;
+}
+
+@media (max-width: 960px) {
+  .gallery-entry {
+    grid-template-columns: 200px 1fr;
+    gap: var(--space-8);
+  }
+}
+
+@media (max-width: 720px) {
+  .gallery-entry {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-entry-strip {
+    grid-template-columns: repeat(4, 1fr);
   }
 
-  .projects-section-heading {
-    font-size: 1.25rem;
+  .gallery-entry-frame--dim {
+    display: none;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   LOGO ENTRY
+   Four-swatch strip for logo identity projects.
+   Each swatch carries its own background to show the
+   variant in context (dark, light, neutral).
+═══════════════════════════════════════════════════════ */
+.logo-entry {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: var(--space-10);
+  padding: var(--space-10) 0;
+  border-top: 1px solid var(--border);
+  align-items: start;
+  margin-top: var(--space-8);
+}
+
+.logo-entry-eyebrow {
+  display: block;
+  margin-bottom: var(--space-3);
+}
+
+.logo-entry-title-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo-entry-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.625rem, 2.5vw, var(--text-3xl));
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0 0 var(--space-4);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.logo-entry-title-link:hover .logo-entry-title {
+  color: var(--accent);
+}
+
+.logo-entry-desc {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  line-height: 1.8;
+  color: var(--ink-3);
+  margin: 0 0 var(--space-5);
+}
+
+.logo-entry-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.logo-entry-cta:hover {
+  color: var(--ink);
+}
+
+.logo-entry-swatches {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.logo-entry-swatch {
+  overflow: hidden;
+}
+
+.logo-entry-img-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  padding: var(--space-6);
+}
+
+.logo-entry-img-wrap img {
+  max-width: 75%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+.logo-entry-swatch:hover .logo-entry-img-wrap img {
+  transform: scale(1.06);
+}
+
+.logo-entry-label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  padding: var(--space-2) var(--space-3) var(--space-3);
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 960px) {
+  .logo-entry {
+    grid-template-columns: 200px 1fr;
+    gap: var(--space-8);
+  }
+}
+
+@media (max-width: 720px) {
+  .logo-entry {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-entry-swatches {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

@@ -1,57 +1,148 @@
 :root {
-  /* ── Brand ── */
-  --primary:        #C27BA0;   /* dusty rose */
-  --primary-dark:   #A45F85;   /* deeper rose */
-  --primary-light:  #F5E6EF;   /* pale blush */
 
-  /* ── Pastel accents ── */
-  --accent-lavender: #B8A9D9;
-  --accent-peach:    #F2C9B2;
-  --accent-blue:     #A8C8E8;
-  --accent-mint:     #A8D8C4;
+  /* ═══════════════════════════════════════════
+     STAGE — background surfaces
+     The cream ground is the stage. Work performs on it.
+  ═══════════════════════════════════════════ */
+  --ground:           #F2EDE6;   /* Warm cream — primary background */
+  --ground-subtle:    #EAE4DC;   /* Slightly deeper — surface variation */
+  --surface:          #FFFFFF;   /* Pure white — elevated cards */
 
-  /* ── Gradients ── */
-  --gradient-primary: linear-gradient(135deg, #B8A9D9 0%, #C27BA0 100%);
-  --gradient-hero:    linear-gradient(160deg, #FDFBFF 0%, #FDF0F8 55%, #F4F0FF 100%);
-  --gradient-nav:     linear-gradient(135deg, #8A6BA8 0%, #C27BA0 100%);
+  /* ═══════════════════════════════════════════
+     INK — four-level text hierarchy
+  ═══════════════════════════════════════════ */
+  --ink:              #1A1510;   /* Warm dark — headlines, primary text */
+  --ink-2:            #3D3830;   /* Body text */
+  --ink-3:            #7A8394;   /* Cool grey — metadata, captions, muted */
+  --ink-4:            #A8AFBB;   /* Lightest — decorative labels only */
 
-  /* ── Backgrounds ── */
-  --bg-cream:    #FDFBFF;   /* near-white, faint lavender hint */
-  --bg-warm:     #FDF0F8;   /* soft blush pink */
-  --bg-section:  #F4F0FF;   /* light lavender */
-  --secondary:   #FFFFFF;
+  /* ═══════════════════════════════════════════
+     ACCENT — one signature color, used sparingly
+     Its scarcity is what gives it meaning.
+  ═══════════════════════════════════════════ */
+  --accent:           #B5606E;   /* Deep dusty rose */
+  --accent-subtle:    #EDD8DA;   /* Faint rose — hover backgrounds only */
 
-  /* ── Text ── */
-  --text-dark:   #2D2040;   /* warm dark purple */
-  --text-body:   #5A4F72;   /* lavender-tinted body */
-  --text-muted:  #9B8FB5;   /* soft muted */
+  /* ═══════════════════════════════════════════
+     BORDERS
+  ═══════════════════════════════════════════ */
+  --border:           rgba(26, 21, 16, 0.10);
+  --border-strong:    rgba(26, 21, 16, 0.22);
 
-  /* ── Fonts ── */
-  --font-serif: 'Cormorant Garamond', Georgia, serif;
-  --font-sans:  'Nunito', 'DM Sans', Arial, sans-serif;
+  /* ═══════════════════════════════════════════
+     TYPOGRAPHY
+  ═══════════════════════════════════════════ */
+  --font-display:  'Cormorant Garamond', Georgia, serif;
+  --font-body:     'DM Sans', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
 
-  /* ── Spacing (unchanged) ── */
-  --space-xs:   0.5rem;
-  --space-sm:   1rem;
-  --space-md:   2rem;
-  --space-lg:   4rem;
-  --space-xl:   5rem;
-  --space-2xl:  7rem;
+  /* Two-register scale: editorial display + precise body */
+  --text-xs:    0.6875rem;   /* 11px — metadata, labels */
+  --text-sm:    0.8125rem;   /* 13px — captions, secondary */
+  --text-base:  1rem;         /* 16px — body */
+  --text-md:    1.125rem;     /* 18px — lead body */
+  --text-lg:    1.375rem;     /* 22px — small display */
+  --text-xl:    1.75rem;      /* 28px */
+  --text-2xl:   2.25rem;      /* 36px */
+  --text-3xl:   3rem;         /* 48px */
+  --text-4xl:   4rem;         /* 64px */
+  --text-5xl:   5.5rem;       /* 88px */
 
-  /* ── Elevation (rose-tinted) ── */
-  --shadow-sm:  0 2px 16px rgba(194, 123, 160, 0.09);
-  --shadow-md:  0 8px 32px rgba(194, 123, 160, 0.17);
-  --shadow-lg:  0 18px 52px rgba(194, 123, 160, 0.24);
+  /* ═══════════════════════════════════════════
+     SPACING — generous editorial rhythm
+  ═══════════════════════════════════════════ */
+  --space-1:    0.25rem;    /*   4px */
+  --space-2:    0.5rem;     /*   8px */
+  --space-3:    0.75rem;    /*  12px */
+  --space-4:    1rem;       /*  16px */
+  --space-5:    1.5rem;     /*  24px */
+  --space-6:    2rem;       /*  32px */
+  --space-8:    3rem;       /*  48px */
+  --space-10:   4rem;       /*  64px */
+  --space-12:   5rem;       /*  80px */
+  --space-16:   7rem;       /* 112px */
+  --space-20:   9rem;       /* 144px */
+  --space-24:  12rem;       /* 192px */
 
-  /* ── Borders (softer, more rounded) ── */
-  --radius-sm:   10px;
-  --radius-md:   16px;
-  --radius-lg:   24px;
+  /* ═══════════════════════════════════════════
+     LAYOUT CONTAINERS
+  ═══════════════════════════════════════════ */
+  --container-sm:    640px;
+  --container-md:    860px;
+  --container-lg:   1100px;
+  --container-xl:   1300px;
+
+  /* ═══════════════════════════════════════════
+     RADII — restrained, not decorative
+  ═══════════════════════════════════════════ */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:  12px;
+
+  /* ═══════════════════════════════════════════
+     ELEVATION — warm shadows, not rose-tinted
+  ═══════════════════════════════════════════ */
+  --shadow-sm:  0 1px 4px  rgba(26, 21, 16, 0.07),
+                0 1px 2px  rgba(26, 21, 16, 0.04);
+  --shadow-md:  0 4px 16px rgba(26, 21, 16, 0.09),
+                0 2px 4px  rgba(26, 21, 16, 0.05);
+  --shadow-lg:  0 12px 40px rgba(26, 21, 16, 0.11),
+                0 4px  8px  rgba(26, 21, 16, 0.06);
+
+  /* ═══════════════════════════════════════════
+     MOTION — deliberate, always decelerating
+  ═══════════════════════════════════════════ */
+  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in:     cubic-bezier(0.64, 0, 0.78, 0);
+  --ease-inout:  cubic-bezier(0.65, 0, 0.35, 1);
+
+  --dur-fast:    180ms;
+  --dur-base:    320ms;
+  --dur-slow:    600ms;
+  --dur-reveal:  900ms;
+
+  /* ═══════════════════════════════════════════
+     BACKWARD-COMPAT ALIASES
+     Map old names → new values so existing pages
+     don't break during the phased redesign.
+     Each alias is removed when its page is rebuilt.
+  ═══════════════════════════════════════════ */
+
+  /* Color aliases */
+  --primary:        var(--accent);
+  --primary-dark:   #913848;
+  --primary-light:  var(--accent-subtle);
+  --bg-cream:       var(--ground);
+  --bg-warm:        var(--ground-subtle);
+  --bg-section:     var(--ground-subtle);
+  --secondary:      var(--surface);
+  --text-dark:      var(--ink);
+  --text-body:      var(--ink-2);
+  --text-muted:     var(--ink-3);
+  --border-muted:   1px solid var(--border);
+
+  /* Deprecated gradient tokens → solid-color fallbacks.
+     Pages using these will render with flat color until rebuilt. */
+  --gradient-primary: var(--accent);
+  --gradient-hero:    var(--ground);
+  --gradient-nav:     var(--ink);
+
+  /* Font aliases */
+  --font-serif:  var(--font-display);
+  --font-sans:   var(--font-body);
+
+  /* Spacing aliases */
+  --space-xs:   var(--space-2);
+  --space-sm:   var(--space-4);
+  --space-md:   var(--space-6);
+  --space-lg:   var(--space-10);
+  --space-xl:   var(--space-12);
+  --space-2xl:  var(--space-16);
+
+  /* Deprecated radius */
   --radius-pill: 100px;
-  --border-muted: 1px solid #EAE0F5;
 
-  /* ── Transitions ── */
-  --transition-fast:   0.2s ease;
-  --transition-base:   0.28s ease;
-  --transition-slow:   0.45s ease;
+  /* Transition aliases (value only, for use inside transition: property …) */
+  --transition-fast:  var(--dur-fast)   var(--ease-out);
+  --transition-base:  var(--dur-base)   var(--ease-out);
+  --transition-slow:  var(--dur-slow)   var(--ease-out);
 }

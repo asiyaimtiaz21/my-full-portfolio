@@ -1,9 +1,38 @@
 @import './variables.css';
 
-/* ── Animations ── */
+/* ═══════════════════════════════════════════════════
+   KEYFRAMES
+═══════════════════════════════════════════════════ */
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes revealFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Page transition ──────────────────────────────────────────
+   Fires on every route change via the re-keyed wrapper in App.js.
+   Opacity only — no transform, so it doesn't compound with the
+   scroll reveals playing inside the incoming page.
+   220ms: perceptible as a handoff but never noticed as "loading."
+─────────────────────────────────────────────────────────────── */
+@keyframes pageFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.page-enter {
+  animation: pageFadeIn 220ms var(--ease-out) both;
+  /* will-change avoids a compositor layer promotion for a 220ms effect */
+}
+
+/* Kept for backward compat with pages not yet rebuilt */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0);    }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeIn {
@@ -11,43 +40,51 @@
   to   { opacity: 1; }
 }
 
-@keyframes floatY {
-  0%, 100% { transform: translateY(0);   }
-  50%       { transform: translateY(-6px); }
-}
-
-@keyframes shimmer {
-  0%   { background-position: -200% center; }
-  100% { background-position:  200% center; }
-}
-
-/* ── Reset & base ── */
+/* ═══════════════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════════════ */
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden; /* prevent accidental horizontal scroll on mobile */
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
   overflow-x: hidden;
-  font-family: var(--font-sans);
-  font-size: 1rem;
-  line-height: 1.65;
-  background-color: var(--bg-cream);
-  color: var(--text-body);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  background-color: var(--ground);
+  color: var(--ink-2);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4 {
-  font-family: var(--font-serif);
+/* Film grain overlay — gives the cream ground paper quality.
+   Fixed so it stays consistent during scroll. Pointer-events
+   none so it never interferes with interaction. */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.038;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
   font-weight: 600;
-  color: var(--text-dark);
-  line-height: 1.15;
+  color: var(--ink);
+  line-height: 1.1;
   margin: 0;
 }
 
@@ -65,39 +102,246 @@ img {
   display: block;
 }
 
-/* ── Text selection ── */
-::selection {
-  background-color: rgba(194, 123, 160, 0.18);
-  color: var(--text-dark);
+button {
+  font-family: var(--font-body);
 }
 
-/* ── Scroll-triggered fade-in ── */
+/* ═══════════════════════════════════════════════════
+   SELECTION
+═══════════════════════════════════════════════════ */
+::selection {
+  background-color: var(--accent-subtle);
+  color: var(--ink);
+}
+
+/* ═══════════════════════════════════════════════════
+   FOCUS
+═══════════════════════════════════════════════════ */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ═══════════════════════════════════════════════════
+   LAYOUT CONTAINERS
+═══════════════════════════════════════════════════ */
+.container {
+  width: 100%;
+  max-width: var(--container-lg);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+.container--sm  { max-width: var(--container-sm); }
+.container--md  { max-width: var(--container-md); }
+.container--xl  { max-width: var(--container-xl); }
+
+@media (max-width: 640px) {
+  .container { padding: 0 var(--space-5); }
+}
+
+/* ═══════════════════════════════════════════════════
+   EYEBROW LABEL
+   Replaces the eyebrow + decorative divider pattern.
+   Typography alone creates the visual pause.
+═══════════════════════════════════════════════════ */
+.eyebrow {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/* ═══════════════════════════════════════════════════
+   DIVIDERS
+═══════════════════════════════════════════════════ */
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--border);
+  border: none;
+  margin: 0;
+}
+
+/* ═══════════════════════════════════════════════════
+   BUTTON SYSTEM
+   No gradients. No pill shapes. No decorative shadows.
+   The interface is a stage; buttons are tools.
+═══════════════════════════════════════════════════ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.875rem 1.875rem;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background-color var(--dur-base) var(--ease-out),
+    color            var(--dur-base) var(--ease-out),
+    border-color     var(--dur-base) var(--ease-out),
+    transform        var(--dur-base) var(--ease-out);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Primary — ink fill, accent on hover */
+.btn-primary {
+  background-color: var(--ink);
+  color: var(--ground);
+  border-color: var(--ink);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Outline — structured, not decorative */
+.btn-outline {
+  background-color: transparent;
+  color: var(--ink);
+  border-color: var(--border-strong);
+}
+
+.btn-outline:hover {
+  background-color: var(--ink);
+  color: var(--ground);
+  border-color: var(--ink);
+}
+
+/* Ghost — text only, no lift */
+.btn-ghost {
+  background-color: transparent;
+  color: var(--ink-3);
+  border-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.btn-ghost:hover {
+  color: var(--ink);
+  transform: none;
+}
+
+/* ═══════════════════════════════════════════════════
+   TEXT LINK
+═══════════════════════════════════════════════════ */
+.link {
+  color: var(--ink);
+  border-bottom: 1px solid var(--border-strong);
+  transition:
+    color        var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+.link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ═══════════════════════════════════════════════════
+   CARD BASE
+   Minimal surface. Work carries the visual weight.
+═══════════════════════════════════════════════════ */
+.card {
+  background-color: var(--surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition:
+    transform    var(--dur-base) var(--ease-out),
+    box-shadow   var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-strong);
+}
+
+/* ═══════════════════════════════════════════════════
+   SCROLL REVEAL SYSTEM
+
+   New classes (.reveal, .reveal-stagger) for rebuilt pages.
+   Old classes (.fade-section, .stagger) kept for pages
+   not yet redesigned — values updated to new motion system.
+═══════════════════════════════════════════════════ */
+
+/* Single element — slow, deliberate arrival */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity   var(--dur-reveal) var(--ease-out),
+    transform var(--dur-reveal) var(--ease-out);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Staggered group — up to 8 children */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity   var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-out);
+}
+
+.reveal-stagger.is-visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay:   0ms; }
+.reveal-stagger.is-visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay:  80ms; }
+.reveal-stagger.is-visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 160ms; }
+.reveal-stagger.is-visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 240ms; }
+.reveal-stagger.is-visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 320ms; }
+.reveal-stagger.is-visible > *:nth-child(6) { opacity: 1; transform: none; transition-delay: 400ms; }
+.reveal-stagger.is-visible > *:nth-child(7) { opacity: 1; transform: none; transition-delay: 480ms; }
+.reveal-stagger.is-visible > *:nth-child(8) { opacity: 1; transform: none; transition-delay: 560ms; }
+
+/* ── Backward compat (updated values, same class names) ── */
 .fade-section {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transform: translateY(20px);
+  transition:
+    opacity   var(--dur-reveal) var(--ease-out),
+    transform var(--dur-reveal) var(--ease-out);
 }
 
 .fade-section.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
-/* stagger children inside a fade-section */
 .fade-section.stagger > * {
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
+  transform: translateY(14px);
+  transition:
+    opacity   var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-out);
 }
 
-.fade-section.stagger.is-visible > *:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.06s; }
-.fade-section.stagger.is-visible > *:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.16s; }
-.fade-section.stagger.is-visible > *:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.26s; }
-.fade-section.stagger.is-visible > *:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.36s; }
-
-/* ── Focus visible (keyboard nav) ── */
-:focus-visible {
-  outline: 2.5px solid var(--primary);
-  outline-offset: 3px;
-  border-radius: var(--radius-sm);
-}
+.fade-section.stagger.is-visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay:   0ms; }
+.fade-section.stagger.is-visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay:  80ms; }
+.fade-section.stagger.is-visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 160ms; }
+.fade-section.stagger.is-visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 240ms; }
+.fade-section.stagger.is-visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 320ms; }
+.fade-section.stagger.is-visible > *:nth-child(6) { opacity: 1; transform: none; transition-delay: 400ms; }
+.fade-section.stagger.is-visible > *:nth-child(7) { opacity: 1; transform: none; transition-delay: 480ms; }
+.fade-section.stagger.is-visible > *:nth-child(8) { opacity: 1; transform: none; transition-delay: 560ms; }

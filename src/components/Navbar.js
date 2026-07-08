@@ -1,67 +1,156 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
+import resumePDF from '../assets/pdfs/my-resume.pdf';
 import './Navbar.css';
 
 const links = [
-  { to: '/', label: 'Home' },
-  { to: '/about', label: 'About' },
-  { to: '/projects', label: 'Projects' },
-  { to: '/skills', label: 'Skills' },
+  { to: '/about',       label: 'About'       },
+  { to: '/projects',    label: 'Projects'    },
+  { to: '/skills',      label: 'Skills'      },
   { to: '/photography', label: 'Photography' },
-  { to: '/contact', label: 'Contact' },
 ];
 
 function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const navRef = useRef(null);
-  const location = useLocation();
+  const [menuOpen, setMenuOpen]   = useState(false);
+  const [scrolled, setScrolled]   = useState(false);
+  const hamburgerRef              = useRef(null);
+  const overlayRef                = useRef(null);
+  const location                  = useLocation();
 
-  // Close mobile menu on outside click
   useEffect(() => {
-    function handleClickOutside(e) {
-      if (menuOpen && navRef.current && !navRef.current.contains(e.target)) {
-        setMenuOpen(false);
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => { setMenuOpen(false); }, [location]);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
-  // Determine if we're on a project detail page so Projects link stays active
+  useEffect(() => {
+    if (menuOpen) {
+      const firstLink = overlayRef.current?.querySelector('a');
+      firstLink?.focus();
+    } else {
+      hamburgerRef.current?.focus();
+    }
+  }, [menuOpen]);
+
+  useEffect(() => {
+    const onKey = (e) => { if (e.key === 'Escape') setMenuOpen(false); };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, []);
+
   const isProjectDetail = location.pathname.startsWith('/project/');
+  const close  = () => setMenuOpen(false);
+  const toggle = () => setMenuOpen(prev => !prev);
 
   return (
-    <nav className="navbar" ref={navRef}>
-      <Link to="/" className="navbar-logo">Asiya Imtiaz</Link>
+    <>
+      <header className={`navbar${scrolled ? ' navbar--scrolled' : ''}`}>
 
-      <button
-        className={`hamburger${menuOpen ? ' open' : ''}`}
-        onClick={() => setMenuOpen(!menuOpen)}
-        aria-label="Toggle menu"
-        aria-expanded={menuOpen}
+        <Link to="/" className="navbar-logo" onClick={close}>
+          Asiya Imtiaz
+        </Link>
+
+        <span className="navbar-sep" aria-hidden="true" />
+
+        {/* Desktop navigation */}
+        <nav className="navbar-nav" aria-label="Primary navigation">
+          <ul className="navbar-links">
+            {links.map(({ to, label }) => (
+              <li key={to}>
+                <NavLink
+                  to={to}
+                  className={({ isActive }) =>
+                    isActive || (to === '/projects' && isProjectDetail) ? 'active' : ''
+                  }
+                >
+                  {label}
+                </NavLink>
+              </li>
+            ))}
+            <li>
+              <a href={resumePDF} target="_blank" rel="noopener noreferrer" className="navbar-resume">
+                Résumé ↗
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <Link to="/contact" className="navbar-cta" onClick={close}>
+          Let's Talk
+          <span aria-hidden="true">→</span>
+        </Link>
+
+        {/* Hamburger — mobile only */}
+        <button
+          ref={hamburgerRef}
+          className={`hamburger${menuOpen ? ' is-open' : ''}`}
+          onClick={toggle}
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-nav"
+        >
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
+        </button>
+
+      </header>
+
+      {/* Mobile overlay */}
+      <div
+        id="mobile-nav"
+        ref={overlayRef}
+        className={`nav-overlay${menuOpen ? ' is-open' : ''}`}
+        aria-hidden={!menuOpen}
+        aria-label="Mobile navigation"
       >
-        <span />
-        <span />
-        <span />
-      </button>
-
-      <ul className={`navbar-links${menuOpen ? ' open' : ''}`}>
-        {links.map(({ to, label }) => (
-          <li key={to}>
+        <nav className="nav-overlay-nav">
+          {links.map(({ to, label }, i) => (
             <NavLink
+              key={to}
               to={to}
-              end={to === '/'}
               className={({ isActive }) =>
-                isActive || (to === '/projects' && isProjectDetail) ? 'active' : ''
+                `nav-overlay-link${isActive || (to === '/projects' && isProjectDetail) ? ' active' : ''}`
               }
-              onClick={() => setMenuOpen(false)}
+              onClick={close}
+              tabIndex={menuOpen ? 0 : -1}
+              style={{ '--link-index': i }}
             >
               {label}
             </NavLink>
-          </li>
-        ))}
-      </ul>
-    </nav>
+          ))}
+          <NavLink
+            to="/contact"
+            className={({ isActive }) =>
+              `nav-overlay-link${isActive ? ' active' : ''}`
+            }
+            onClick={close}
+            tabIndex={menuOpen ? 0 : -1}
+            style={{ '--link-index': links.length }}
+          >
+            Contact
+          </NavLink>
+          <a
+            href={resumePDF}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav-overlay-link"
+            tabIndex={menuOpen ? 0 : -1}
+            style={{ '--link-index': links.length + 1 }}
+          >
+            Résumé ↗
+          </a>
+        </nav>
+
+        <p className="nav-overlay-tagline">Digital Designer · Central Florida</p>
+      </div>
+    </>
   );
 }
 

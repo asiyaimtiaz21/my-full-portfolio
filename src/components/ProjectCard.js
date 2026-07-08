@@ -1,91 +1,84 @@
 import { Link } from 'react-router-dom';
 import './ProjectCard.css';
 
-function ProjectCard({ id, image, title, category, description, status, tools, figmaLink, liveLink, githubLink }) {
-  const detailPath = `/project/${id}`;
-  const isComingSoon = status === 'coming-soon';
+const CATEGORY_LABELS = {
+  'web-design':     'Web Design',
+  'ux-ui':          'UX / UI Design',
+  'graphic-design': 'Graphic Design',
+};
 
-  // Determine the primary external link and label
-  const primaryLink  = liveLink  ?? figmaLink  ?? null;
-  const primaryLabel = liveLink  ? 'Live Demo ↗'
-                     : figmaLink ? 'View Prototype ↗'
-                     : null;
+function ProjectCard({
+  id, image, title, category, description, status,
+  figmaLink, liveLink, variant = 'secondary',
+}) {
+  const detailPath    = `/project/${id}`;
+  const isComingSoon  = status === 'coming-soon';
+  const categoryLabel = CATEGORY_LABELS[category] || category;
 
-  // Show Prototype as a secondary button only when there is also a live link
-  const showPrototype = liveLink && figmaLink;
+  const externalLink  = liveLink  ?? figmaLink  ?? null;
+  const externalLabel = liveLink  ? 'Live Site' : figmaLink ? 'Prototype' : null;
 
-  return (
-    <div className={`project-card${isComingSoon ? ' coming-soon' : ''}`}>
+  if (variant === 'featured') {
+    return (
+      <article className={`project-card project-card--featured${isComingSoon ? ' project-card--soon' : ''}`}>
 
-      {/* ── Image ── */}
-      <Link to={detailPath} className="project-card-image-wrapper" tabIndex={-1} aria-hidden="true">
-        <img src={image} alt={title} className="project-card-image" />
+        {/* Image — the stretched link below covers click */}
+        <div className="pc-image-wrap">
+          <img src={image} alt={title} className="pc-image" loading="lazy" />
 
-        {/* hover overlay */}
-        <div className="project-card-overlay">
-          <span className="project-card-overlay-cta">Case Study →</span>
-        </div>
-
-        <span className="project-card-category">{category.replace(/-/g, ' ')}</span>
-        {isComingSoon && <span className="project-card-badge">Coming Soon</span>}
-      </Link>
-
-      {/* ── Body ── */}
-      <div className="project-card-body">
-        <Link to={detailPath} className="project-card-title-link">
-          <h3 className="project-card-title">{title}</h3>
-        </Link>
-
-        <p className="project-card-description">{description}</p>
-
-        {/* ── Tech stack ── */}
-        {tools && tools.length > 0 && (
-          <div className="project-card-tools">
-            {tools.map(tool => (
-              <span key={tool} className="project-card-tool">{tool}</span>
-            ))}
+          {/* Hover scrim — visible on :hover of the article */}
+          <div className="pc-scrim" aria-hidden="true">
+            <span className="pc-scrim-label">View Case Study →</span>
           </div>
-        )}
 
-        {/* ── Actions ── */}
-        <div className="project-card-actions">
-          {primaryLink && (
-            <a
-              href={primaryLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="card-btn card-btn-primary"
-            >
-              {primaryLabel}
-            </a>
-          )}
-          {showPrototype && (
-            <a
-              href={figmaLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="card-btn card-btn-outline"
-            >
-              Prototype ↗
-            </a>
-          )}
-          {githubLink && (
-            <a
-              href={githubLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="card-btn card-btn-ghost"
-            >
-              GitHub
-            </a>
-          )}
-          <Link to={detailPath} className={`card-btn ${primaryLink ? 'card-btn-ghost' : 'card-btn-primary'}`}>
-            Case Study →
-          </Link>
+          {isComingSoon && <span className="pc-badge">Coming Soon</span>}
         </div>
+
+        {/* Info row */}
+        <div className="pc-body">
+          <div className="pc-text">
+            <span className="eyebrow pc-eyebrow">{categoryLabel}</span>
+            {/* Title link — ::after stretches to cover the entire card */}
+            <Link to={detailPath} className="pc-title-link">
+              <h3 className="pc-title">{title}</h3>
+            </Link>
+          </div>
+
+          {/* External link floats above the stretched link via z-index */}
+          {externalLink && !isComingSoon && (
+            <a
+              href={externalLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pc-external"
+            >
+              {externalLabel} ↗
+            </a>
+          )}
+        </div>
+
+      </article>
+    );
+  }
+
+  // ── Secondary variant ──────────────────────────────────
+  return (
+    <article className={`project-card project-card--secondary${isComingSoon ? ' project-card--soon' : ''}`}>
+
+      <div className="pc-image-wrap">
+        <img src={image} alt={title} className="pc-image" loading="lazy" />
+        {isComingSoon && <span className="pc-badge">Coming Soon</span>}
       </div>
 
-    </div>
+      <div className="pc-body">
+        <span className="eyebrow pc-eyebrow">{categoryLabel}</span>
+        <Link to={detailPath} className="pc-title-link">
+          <h3 className="pc-title">{title}</h3>
+        </Link>
+        {description && <p className="pc-description">{description}</p>}
+      </div>
+
+    </article>
   );
 }
 
