@@ -63,7 +63,7 @@ function RichCaseStudy({ project }) {
   const {
     title, category, image, tools,
     role, year, duration, overview, problem,
-    insights, process, keyDecisions, retrospective,
+    insights, process, keyDecisions, results, testimonial, retrospective,
     figmaLink, liveLink, presentationLink,
     documents, ctaHeading, ctaSub,
   } = project;
@@ -72,12 +72,17 @@ function RichCaseStudy({ project }) {
   const externalLink  = liveLink  ?? figmaLink  ?? null;
   const externalLabel = liveLink  ? 'View Live Site' : 'View Prototype';
   const hasCTA = externalLink || presentationLink || documents?.length;
+  const defaultCtaHeading = liveLink
+    ? 'The site is live and interactive.'
+    : 'The prototype is interactive.';
 
   // One ref per content block — staggered scroll reveals
   const [problemRef,   problemVisible]   = useInView();
   const [insightsRef,  insightsVisible]  = useInView();
   const [processRef,   processVisible]   = useInView();
   const [decisionsRef, decisionsVisible] = useInView();
+  const [resultsRef,   resultsVisible]   = useInView();
+  const [testimonialRef, testimonialVisible] = useInView();
   const [ctaRef,       ctaVisible]       = useInView();
   const [reflectionRef, reflectionVisible] = useInView();
 
@@ -120,6 +125,56 @@ function RichCaseStudy({ project }) {
         <section className="cs-section">
           <div className="cs-container">
             <p className="cs-overview-text">{overview}</p>
+          </div>
+        </section>
+      )}
+
+      {/* ══ CTA — prototype link and/or document downloads ══ */}
+      {hasCTA && (
+        <section className="cs-section cs-cta-section">
+          <div
+            ref={ctaRef}
+            className={`cs-container cs-cta-inner reveal${ctaVisible ? ' is-visible' : ''}`}
+          >
+            <p className="cs-cta-heading">
+              {ctaHeading ?? defaultCtaHeading}
+            </p>
+            <p className="cs-cta-sub">
+              {ctaSub ?? 'See the flows in motion.'}
+            </p>
+            <div className="cs-cta-actions">
+              {externalLink && (
+                <a
+                  href={externalLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary"
+                >
+                  {externalLabel} ↗
+                </a>
+              )}
+              {presentationLink && (
+                <a
+                  href={presentationLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-outline"
+                >
+                  View Case Study ↗
+                </a>
+              )}
+              {documents?.map(({ label, href }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-outline"
+                >
+                  {label} ↗
+                </a>
+              ))}
+            </div>
           </div>
         </section>
       )}
@@ -212,52 +267,43 @@ function RichCaseStudy({ project }) {
         </section>
       )}
 
-      {/* ══ CTA — prototype link and/or document downloads ══ */}
-      {hasCTA && (
-        <section className="cs-section cs-band cs-cta-section">
-          <div
-            ref={ctaRef}
-            className={`cs-container cs-cta-inner reveal${ctaVisible ? ' is-visible' : ''}`}
-          >
-            <p className="cs-cta-heading">
-              {ctaHeading ?? 'The prototype is interactive.'}
-            </p>
-            <p className="cs-cta-sub">
-              {ctaSub ?? 'See the flows in motion.'}
-            </p>
-            <div className="cs-cta-actions">
-              {externalLink && (
-                <a
-                  href={externalLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-primary"
-                >
-                  {externalLabel} ↗
-                </a>
-              )}
-              {presentationLink && (
-                <a
-                  href={presentationLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-outline"
-                >
-                  View Case Study ↗
-                </a>
-              )}
-              {documents?.map(({ label, href }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-outline"
-                >
-                  {label} ↗
-                </a>
+      {/* ══ Results — measurable outcomes ══ */}
+      {results && (
+        <section className="cs-section cs-band">
+          <div className="cs-container">
+            <span className="eyebrow cs-section-eyebrow">Results</span>
+            <div
+              ref={resultsRef}
+              className={`cs-results-grid reveal${resultsVisible ? ' is-visible' : ''}`}
+            >
+              {results.map(({ metric, value }) => (
+                <div className="cs-result" key={metric}>
+                  <span className="cs-result-metric">{metric}</span>
+                  <span className="cs-result-value">{value}</span>
+                </div>
               ))}
             </div>
+          </div>
+        </section>
+      )}
+
+      {/* ══ Testimonial — employer recommendation ══ */}
+      {testimonial && (
+        <section className="cs-section">
+          <div className="cs-container">
+            <span className="eyebrow cs-section-eyebrow">Recommendation</span>
+            <blockquote
+              ref={testimonialRef}
+              className={`cs-testimonial reveal${testimonialVisible ? ' is-visible' : ''}`}
+            >
+              <p className="cs-testimonial-quote">“{testimonial.quote}”</p>
+              <footer className="cs-testimonial-attribution">
+                <span className="cs-testimonial-author">{testimonial.author}</span>
+                {testimonial.role && (
+                  <span className="cs-testimonial-role">{testimonial.role}</span>
+                )}
+              </footer>
+            </blockquote>
           </div>
         </section>
       )}

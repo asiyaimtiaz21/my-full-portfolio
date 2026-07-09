@@ -9,14 +9,14 @@ const CATEGORY_LABELS = {
 
 function ProjectCard({
   id, image, title, category, description, status,
-  figmaLink, liveLink, variant = 'secondary',
+  figmaLink, liveLink, redesignLink, variant = 'secondary',
 }) {
   const detailPath    = `/project/${id}`;
   const isComingSoon  = status === 'coming-soon';
   const categoryLabel = CATEGORY_LABELS[category] || category;
 
-  const externalLink  = liveLink  ?? figmaLink  ?? null;
-  const externalLabel = liveLink  ? 'Live Site' : figmaLink ? 'Prototype' : null;
+  const externalLink  = liveLink  ?? figmaLink  ?? redesignLink ?? null;
+  const externalLabel = liveLink  ? 'Live Site' : figmaLink ? 'Prototype' : redesignLink ? 'Redesign' : null;
 
   if (variant === 'featured') {
     return (
@@ -72,9 +72,21 @@ function ProjectCard({
 
       <div className="pc-body">
         <span className="eyebrow pc-eyebrow">{categoryLabel}</span>
-        <Link to={detailPath} className="pc-title-link">
-          <h3 className="pc-title">{title}</h3>
-        </Link>
+        <div className="pc-title-row">
+          <Link to={detailPath} className="pc-title-link">
+            <h3 className="pc-title">{title}</h3>
+          </Link>
+          {externalLink && !isComingSoon && (
+            <a
+              href={externalLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pc-external"
+            >
+              {externalLabel} ↗
+            </a>
+          )}
+        </div>
         {description && <p className="pc-description">{description}</p>}
       </div>
 

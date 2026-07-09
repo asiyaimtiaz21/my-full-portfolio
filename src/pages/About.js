@@ -49,7 +49,7 @@ function About() {
             I'm Asiya, a designer driven by curiosity, creativity, and a passion for creating meaningful digital experiences.
           </p>
           <p>
-            I graduated from the University of Central Florida with a Bachelor's degree in Digital Media, specializing in Web &amp; Interactive Media, along with a minor in Communications. Over the past few years, I've built experience in UI/UX design, web design, branding, graphic design, and front-end development — combining creativity with strategy to create solutions that are both functional and visually engaging.
+            I graduated from the University of Central Florida with a Bachelor's degree in Digital Media, specializing in Web &amp; Interactive Media, along with a minor in Communications. Over the past few years, I've built experience in UI/UX design, web design, branding, graphic design, and front-end development while combining creativity with strategy to create solutions that are both functional and visually engaging.
           </p>
           <p>
             What drew me to this field is the opportunity to solve problems through design. I enjoy taking complex ideas and transforming them into intuitive, user-centered experiences that not only look great but also make people's lives a little easier.

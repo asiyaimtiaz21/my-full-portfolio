@@ -49,324 +49,579 @@ const flowerStockImage  = 'https://images.unsplash.com/photo-1508610048659-a06b6
 const studyStockImage   = 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=1200&q=80';
 
 const projects = [
-    {
-      id: 1,
-      title: 'Reading Platform',
-      category: 'web-design',
-      role: 'Web Designer & Content Lead',
-      year: '2024',
-      description: 'A full-stack reading platform focused on user engagement and accessibility. Designed end-to-end from wireframes to a responsive interface with a clean reading experience. I oversaw content production in this project. It was a Capstone project which won my three other team members and I entry into the Senior Web Design Showcase',
-      image: sableImage,
-      tools: ['Figma', 'React', 'CSS', 'Node.js'],
-      liveLink: 'https://sable-two.vercel.app/',
-      githubLink: 'https://github.com/xiarune/sable.git',
-      overview: 'A full-stack capstone project built around the question of what makes a reading platform worth staying in. My role spanned both sides of the product: UI design and the entire content system — book covers, story titles, user accounts, and data. The project won entry into the Senior Web Design Showcase.',
-      problem: "Building a reading platform means solving two problems simultaneously — making discovery easy and making reading feel worth staying for. The challenge wasn't just technical; it was creating a content ecosystem believable enough that users would actually inhabit it. An empty or half-finished library signals abandonment the moment a user lands.",
-      insights: [
-        {
-          number: '01',
-          label: 'Content is the product',
-          body: 'Users don\'t evaluate reading platforms on features — they evaluate them on what\'s there to read. No amount of UI polish compensates for a thin or visually inconsistent library.',
-        },
-        {
-          number: '02',
-          label: 'Account context drives return visits',
-          body: 'Personalization — reading history, saved books, mock recommendations — transformed passive visitors into users with a reason to come back. Without it, every session felt like the first.',
-        },
-        {
-          number: '03',
-          label: 'Cover design is UX',
-          body: 'Badly designed book covers broke the platform\'s credibility faster than any broken component. Each cover had to function as a real published object to sustain the experience.',
-        },
-      ],
-      keyDecisions: [
-        {
-          versus: 'Populating content after launch',
-          decision: 'Build content in parallel with the UI',
-          annotation: 'Shipping the UI empty and filling it later meant the platform would never feel inhabited during testing. Building content alongside the interface kept every review session grounded in a real use case.',
-        },
-        {
-          versus: 'Default browser typography',
-          decision: 'A purpose-built reading type system',
-          annotation: 'Long-form reading is unforgiving. Optimized line length, line height, and contrast were defined as a system — not applied page by page — so the reading experience stayed consistent at every viewport.',
-        },
-        {
-          versus: 'End-of-project review',
-          decision: 'Survey-driven iteration throughout',
-          annotation: 'Distributing user surveys at key milestones — not just at the end — kept feedback loops short and surfaced usability issues before they compounded into structural problems.',
-        },
-      ],
-      process: [
-        { step: 'Research', detail: 'Conducted user interviews and competitive analysis to understand reading habits and pain points.' },
-        { step: 'Wireframing', detail: 'Sketched low-fidelity layouts, then built interactive prototypes in Figma for user testing.' },
-        { step: 'Visual Design', detail: 'Defined a clean typographic system and accessible colour palette optimised for long reading sessions.' },
-        { step: 'Development', detail: 'Built the responsive frontend in React with a focus on performance and smooth page transitions.' },
-      ],
-      retrospective: "If I revisited this project, I would expand on my role in content production and platform population, where I was responsible for creating and organizing the majority of the platform's content. This included designing book covers, writing and formatting story titles and narratives, generating mock user accounts, and building out personalized account experiences. I also handled testing and user flow validation, along with distributing surveys, collecting feedback, and analyzing results to improve the overall structure and usability of the platform's database. This process gave me a deeper understanding of how content systems and user-facing experiences connect in a reading platform environment.",
+  
+  {
+    id: 1,
+    title: 'Sable',
+    category: 'web-design',
+    role: 'Content Production Lead & UX Researcher',
+    year: '2025–2026',
+  
+    description:
+      'A live community-driven storytelling platform created for our senior capstone project. Inspired by Webtoon, Wattpad, AO3, and Audible, Sable combines immersive reading, personalized recommendations, community features, audio narration, and multimedia storytelling within a medieval-inspired experience. I served as Content Production Lead while contributing to UX research, competitive analysis, stakeholder planning, feature planning, and usability testing.',
+  
+    image: sableImage,
+  
+    tools: ['Figma', 'React', 'CSS', 'Node.js', 'Adobe Photoshop', 'Canva'],
+  
+    liveLink: 'https://sable-two.vercel.app/',
+    githubLink: 'https://github.com/xiarune/sable.git',
+  
+    overview:
+      'Sable is a live community-driven storytelling platform built for readers and writers who value craft, atmosphere, and discovering stories worth getting lost in. Inspired by Webtoon, Wattpad, AO3, and Audible, the platform combines immersive reading with community interaction, personalized profiles, bookmarks, messaging, audio narration, music integration, and story discovery through genres, fandoms, and an AO3-inspired tagging system. During onboarding, users select their favorite genres, allowing Sable to recommend stories through a personalized recommendation algorithm that can be updated at any time through profile settings. The interface embraces a medieval-inspired visual identity using warm parchment tones, earthy colors, and textured backgrounds that evoke the feeling of aged manuscripts while creating a cozy and immersive reading experience. Developed as our senior capstone project, Sable was selected for the Senior Web Design Showcase, where our team presented the project to faculty and industry professionals. As Content Production Lead, I led content production while contributing to UX research, competitive analysis, stakeholder planning, feature planning, and usability testing throughout the project.',
+  
+    problem:
+      'Readers and writers often rely on multiple platforms to publish stories, discover new content, listen to narrated works, and engage with creative communities. We wanted to create a single platform that combined immersive reading, multimedia storytelling, personalized discovery, and meaningful community interaction while making it easier for users to find stories that genuinely match their interests.',
+  
+    insights: [
+      {
+        number: '01',
+        label: 'Personalized discovery keeps readers engaged',
+        body:
+          'User research and competitive analysis showed that readers want more intentional ways to discover stories. By allowing users to select their favorite genres during onboarding and supporting discovery through genres, fandoms, and an AO3-inspired tagging system, Sable creates a personalized experience that continues to evolve as users update their preferences.',
+      },
+      {
+        number: '02',
+        label: 'Storytelling extends beyond the written page',
+        body:
+          'Research into platforms like Audible, Webtoon, Wattpad, and AO3 inspired features such as audio narration, music integration, community interaction, personalized profiles, and flexible tagging that support different ways of experiencing and sharing stories.',
+      },
+      {
+        number: '03',
+        label: 'Atmosphere strengthens immersion',
+        body:
+          'The interface was intentionally designed around a medieval-inspired aesthetic using parchment textures, warm earth tones, and aged paper styling. These visual choices reinforce the storytelling experience and create an environment that feels distinct from modern reading platforms.',
+      },
+    ],
+  
+    keyDecisions: [
+      {
+        versus: 'Replicating a single storytelling platform',
+        decision: 'Combine the strengths of multiple platforms',
+        annotation:
+          'Rather than recreating one existing service, we combined inspiration from Webtoon, Wattpad, AO3, and Audible to create a platform that blends immersive reading, multimedia storytelling, community interaction, personalized recommendations, and flexible story discovery into one cohesive experience.',
+      },
+      {
+        versus: 'Generic content recommendations',
+        decision: 'Personalized recommendations from onboarding',
+        annotation:
+          'Users choose the genres they enjoy when creating an account, allowing the recommendation algorithm to surface stories tailored to their interests immediately. These preferences can be updated later, ensuring recommendations continue evolving alongside each reader.',
+      },
+      {
+        versus: 'Modern minimalist aesthetics',
+        decision: 'A medieval-inspired visual identity',
+        annotation:
+          'Warm parchment colors, textured backgrounds, and earthy tones were chosen to evoke the feeling of reading from an aged manuscript. This visual language supports the platform’s storytelling focus while creating a memorable and immersive experience.',
+      },
+    ],
+  
+    process: [
+      {
+        step: 'Research & Planning',
+        detail:
+          'Conducted competitive analysis of platforms including Webtoon, Wattpad, AO3, and Audible while participating in stakeholder planning, user research, feature prioritization, and identifying opportunities to improve story discovery, community engagement, and multimedia storytelling.',
+      },
+      {
+        step: 'UX & Product Design',
+        detail:
+          'Collaborated with my team on wireframes, user flows, onboarding experiences, recommendation features, and interactive prototypes in Figma while helping shape a medieval-inspired interface built around parchment textures, earthy colors, and immersive reading experiences.',
+      },
+      {
+        step: 'Content Production',
+        detail:
+          'Led the creation and organization of the platform’s content by designing book covers, writing story titles and descriptions, creating user profiles, populating story libraries, and ensuring the platform felt authentic, engaging, and consistent throughout testing and demonstrations.',
+      },
+      {
+        step: 'Testing & Refinement',
+        detail:
+          'Participated in usability testing, distributed surveys, analyzed participant feedback, and collaborated with the team to improve navigation, recommendation flows, content organization, and overall user experience throughout development.',
+      },
+    ],
+  
+    retrospective:
+      'Sable reinforced how closely UX research, content strategy, and product design influence one another throughout the development process. As Content Production Lead, I learned that realistic content plays a critical role in shaping user perception and validating design decisions. Beyond content production, I contributed to competitive analysis, stakeholder planning, user research, feature planning, and usability testing while collaborating closely with my team to build and launch a fully deployed storytelling platform. Working on features such as personalized recommendations, immersive story discovery, the AO3-inspired tagging system, and the platform’s medieval-inspired visual identity deepened my understanding of how thoughtful design decisions can shape both usability and emotional engagement. Presenting Sable during the Senior Web Design Showcase gave me valuable experience communicating our research, design process, and product vision to faculty and industry professionals.',
+  },
+
+  {
+    id: 2,
+    title: 'Nova',
+    category: 'ux-ui',
+  
+    description:
+      'A high-fidelity mobile UX/UI prototype designed to help people form more personalized and meaningful connections beyond surface-level interactions. Nova is a star-themed connection app that allows users to discover friendships and relationships through shared hobbies, personality traits, interests, values, and compatibility preferences. I worked as a UX/UI Designer on the team, contributing to interface design, user flows, prototyping, research, and usability testing.',
+  
+    role: 'UX/UI Designer',
+    year: '2025',
+    duration: '6 months',
+  
+    overview:
+      'Nova is a high-fidelity interactive mobile app prototype created in Figma that explores a more intentional approach to online connection. Rather than relying primarily on appearance-based matching, Nova focuses on helping users build relationships through shared interests, personality, values, and lifestyle preferences. Inspired by platforms such as Tinder, Hinge, Bumble, Facebook Dating, OkCupid, and Coffee Meets Bagel, Nova combines personalized profiles, compatibility-based discovery, inclusive filtering, chat features, and privacy controls within a star-themed experience centered around the idea of finding meaningful connections and your “fated pair.”',
+  
+    problem:
+      'Many existing connection platforms prioritize quick judgments and surface-level interactions, making it difficult for users to understand who someone truly is before connecting. Our challenge was to design an experience that encourages deeper connections by allowing users to express their identity, discover shared interests, and connect with people based on compatibility rather than appearance alone.',
+  
+    insights: [
+      {
+        number: '01',
+        label: 'Meaningful connections require context',
+        body:
+          'Research into existing platforms showed that users often want more information before deciding to connect. Shared hobbies, personality traits, values, and interests provide deeper context and help users discover people they genuinely relate to.',
+      },
+      {
+        number: '02',
+        label: 'Personalization creates stronger matches',
+        body:
+          'Users have unique identities, preferences, and relationship goals. Nova was designed with customizable profiles and inclusive filtering options that allow people to discover connections based on what matters most to them.',
+      },
+      {
+        number: '03',
+        label: 'Trust encourages authentic interaction',
+        body:
+          'Building relationships online requires users to feel comfortable and in control. Privacy settings, profile customization, and intentional user choices were integrated to create a safer and more authentic connection experience.',
+      },
+    ],
+  
+    keyDecisions: [
+      {
+        versus: 'Appearance-first matching',
+        decision: 'Compatibility-driven discovery',
+        annotation:
+          'Nova was designed to move beyond quick judgments by emphasizing hobbies, personality, interests, identity, and values. The goal was to help users connect with people they genuinely relate to rather than making decisions based only on appearance.',
+      },
+      {
+        versus: 'Limited profile information',
+        decision: 'Personalized identity-focused profiles',
+        annotation:
+          'Profiles were designed as a reflection of each user’s personality and interests, allowing people to showcase what makes them unique and giving others more meaningful reasons to connect.',
+      },
+      {
+        versus: 'Generic user experiences',
+        decision: 'Inclusive customization and privacy controls',
+        annotation:
+          'Nova prioritizes individual choice by allowing users to customize discovery preferences, including hobbies, personality, gender, sexual orientation, values, and other important factors that influence compatibility.',
+      },
+    ],
+  
+    image: novaImage,
+  
+    tools: ['Figma'],
+  
+    figmaLink:
+      'https://www.figma.com/proto/UvAsLdNld2MCbzXtuR1vs0/Nova?node-id=77-146&t=FkqBmv3TuovnIbCC-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=77%3A146&show-proto-sidebar=1',
+  
+    liveLink: null,
+  
+    githubLink: null,
+  
+    presentationLink: novaPresentationPDF,
+  
+    process: [
+      {
+        step: 'Research & Competitive Analysis',
+        detail:
+          'Researched existing platforms including Tinder, Hinge, Bumble, Facebook Dating, OkCupid, and Coffee Meets Bagel to identify opportunities for creating more personalized and meaningful connection experiences.',
+      },
+      {
+        step: 'Audience & Product Planning',
+        detail:
+          'Defined target audiences, explored user motivations, considered stakeholder needs, and identified opportunities for a more inclusive and personalized approach to online connection.',
+      },
+      {
+        step: 'UX/UI Design',
+        detail:
+          'Designed user flows, swipe interactions, personalized profiles, chat features, privacy settings, and a cohesive star-themed interface system focused on creating an engaging and approachable experience.',
+      },
+      {
+        step: 'Prototyping & Testing',
+        detail:
+          'Built a high-fidelity interactive prototype in Figma and conducted usability testing to evaluate user flows, gather feedback, and refine the overall experience.',
+      },
+    ],
+  
+    retrospective:
+      'Nova expanded my understanding of designing digital experiences around human connection, identity, and personalization. As a UX/UI Designer, I contributed to interface design, user flows, prototyping, research, and usability testing while collaborating with my team to create an experience focused on meaningful connections rather than superficial interactions. Through competitive analysis and user research, I learned how important trust, inclusivity, personalization, and user control are when designing social experiences. If I continued developing Nova, I would expand testing with a broader range of users, continue improving accessibility, and explore additional ways to support deeper connections between people.',
+  },
+
+  {
+    id: 3,
+    title: 'Starr Wellness Collective',
+    category: 'ux-ui',
+    role: 'Content Strategist & Web Design Intern',
+    year: '2025',
+    duration: '6 months',
+
+    image: swcPlaceholder,
+
+    tools: ['Figma', 'Adobe Illustrator', 'Adobe Photoshop', 'Google PageSpeed Insights', 'Google Analytics'],
+
+    description:
+      'A full website redesign completed during my UX/UI Design internship at Starr Wellness Collective. I led the project from a formal redesign proposal through UX auditing, information architecture, and a complete visual overhaul while optimizing performance, accessibility, and technical SEO along the way. The redesign increased user engagement across the site and contributed to the organization qualifying for a $10,000 Google Ad Grant.',
+
+    liveLink: null,
+    figmaLink: null,
+    githubLink: null,
+    redesignLink: swcCaseStudyPDF,
+
+    documents: [
+      { label: 'View Redesign Proposal', href: swcProposalPDF },
+      { label: 'View Redesign', href: swcCaseStudyPDF },
+    ],
+
+    ctaHeading: 'The full redesign is documented.',
+    ctaSub: 'Explore the redesign proposal, UX process, and measurable outcomes.',
+
+    overview:
+      'During my UX/UI Design internship at Starr Wellness Collective, I led a comprehensive website redesign focused on improving usability, accessibility, search visibility, and user engagement. The project began with a formal redesign proposal before moving through UX auditing, information architecture, visual design, and implementation recommendations. Alongside redesigning the user experience, I optimized website performance, strengthened technical SEO, improved mobile responsiveness, ensured compliance with Google Ad Grants website requirements, and contributed to helping the organization qualify for a $10,000 Google Ad Grant.',
+
+    problem:
+      'The existing website no longer reflected the professionalism of the organization or effectively guided visitors toward learning about services, providers, and wellness resources. Navigation was difficult to follow, mobile usability needed improvement, and technical issues limited both user experience and search performance. The goal was to create a website that felt welcoming, trustworthy, and easier to navigate while improving overall site performance, accessibility, and visibility.',
+
+    insights: [
+      {
+        number: '01',
+        label: 'Trust begins with the first impression',
+        body:
+          'Visitors searching for wellness services make decisions quickly based on professionalism, clarity, and credibility. Creating a visual experience that communicated warmth, expertise, and trust became one of the primary design goals.',
+      },
+      {
+        number: '02',
+        label: 'Clear navigation increases conversions',
+        body:
+          'Important services and provider information were buried within the original navigation structure. Reorganizing the information architecture reduced friction and made essential content significantly easier to discover.',
+      },
+      {
+        number: '03',
+        label: 'Performance is part of user experience',
+        body:
+          'Improving page speed, technical SEO, mobile responsiveness, and eliminating broken links not only created a smoother browsing experience but also increased user engagement and search visibility.',
+      },
+    ],
+
+    keyDecisions: [
+      {
+        versus: 'Beginning with visual mockups',
+        decision: 'Start with research and strategy',
+        annotation:
+          'Created a formal redesign proposal before entering the design phase, allowing project goals, stakeholder expectations, and UX recommendations to be established before visual design began.',
+      },
+      {
+        versus: 'Maintaining the existing site structure',
+        decision: 'Rebuild the information architecture',
+        annotation:
+          'Navigation and content hierarchy were redesigned around visitor goals rather than internal organization, making services, providers, and wellness resources easier to locate.',
+      },
+      {
+        versus: 'Improving only the visual design',
+        decision: 'Combine UX improvements with technical optimization',
+        annotation:
+          'The redesign balanced aesthetics with measurable performance improvements by optimizing page speed, strengthening technical SEO, improving mobile usability, repairing broken links, and increasing accessibility.',
+      },
+    ],
+
+    process: [
+      {
+        step: 'Discovery & UX Audit',
+        detail:
+          'Evaluated the existing website through usability reviews, stakeholder discussions, competitive analysis, and content audits before documenting recommendations in a comprehensive redesign proposal.',
+      },
+      {
+        step: 'Information Architecture',
+        detail:
+          'Restructured navigation, content hierarchy, and user flows to improve discoverability of providers, wellness services, educational resources, and important calls to action.',
+      },
+      {
+        step: 'Visual Design & Optimization',
+        detail:
+          'Designed a refreshed visual identity with updated layouts, typography, color systems, imagery, and responsive components while improving accessibility, technical SEO, page speed, and mobile responsiveness.',
+      },
+      {
+        step: 'Evaluation & Iteration',
+        detail:
+          'Measured redesign performance using analytics and optimization tools while monitoring user engagement, search visibility, mobile usability, conversions, and website compliance with Google Ad Grants requirements.',
+      },
+    ],
+
+    results: [
+      {
+        category: 'Improved Website Performance',
+        metric: 'Site Speed Optimization',
+        value: '25% faster load time',
+        description:
+          'Reduced average page load time by 25%. Improved First Contentful Paint (FCP) to 0.8 seconds, improved Largest Contentful Paint (LCP) by +6, and achieved a near-perfect Cumulative Layout Shift (CLS) score of 0.003 as measured by Google PageSpeed Insights.',
+      },
+      {
+        category: 'Improved Website Performance',
+        metric: 'Technical SEO',
+        value: '23% increase in organic search visibility (75 → 92)',
+        description:
+          'Increased organic search visibility by 23% through technical SEO improvements, including website structure optimization, improved content organization, and enhanced search engine accessibility.',
+      },
+      {
+        category: 'Improved Website Performance',
+        metric: 'Mobile Responsiveness',
+        value: '15–20% improvement in mobile usability',
+        description:
+          'Improved mobile usability by 15–20% through responsive design improvements, resolved mobile display issues, enhanced accessibility, and reduced mobile bounce rate.',
+      },
+      {
+        category: 'Improved Website Performance',
+        metric: 'Broken Links',
+        value: 'Nearly 100% reduction in broken links',
+        description:
+          'Identified and eliminated nearly 100% of broken links across the website, improving navigation, usability, and overall technical website health.',
+      },
+    
+      {
+        category: 'Boosted Engagement',
+        metric: 'Overall Website Engagement',
+        value: '38.9% longer sessions and 8.1% lower bounce rate',
+        description:
+          'Increased average session duration by 38.9%, improving from 5m 23s to 7m 42s. Reduced overall bounce rate by 8.1%, from 42.5% down to 39.1%.',
+      },
+      {
+        category: 'Boosted Engagement',
+        metric: 'Blog Engagement',
+        value: '+38.3% increase in visits',
+        description:
+          'Increased visits to the updated Blog page by 38.3% since April 20th through improved content organization and discoverability.',
+      },
+      {
+        category: 'Boosted Engagement',
+        metric: 'Contact Form Submissions',
+        value: '133% increase',
+        description:
+          'Boosted contact form submissions by 133%, increasing from 6 total submissions before my start date to 14 new submissions after optimization.',
+      },
+    
+      {
+        category: 'Streamlined Operations & Enhanced Brand Professionalism',
+        metric: 'Google Ad Grants Compliance',
+        value: '100% website policy compliance',
+        description:
+          'Ensured 100% compliance with Google Ad Grants website policies by improving nonprofit mission clarity, accessibility, content quality, and website requirements.',
+      },
+      {
+        category: 'Streamlined Operations & Enhanced Brand Professionalism',
+        metric: 'Google Ad Grant Achievement',
+        value: '$10,000 Google Ad Grant',
+        description:
+          'Helped support Starr Wellness Collective in achieving qualification for a $10,000 Google Ad Grant by improving website performance, technical SEO, content clarity, and nonprofit website compliance.',
+      },
+    ],
+
+    testimonial: {
+      author: 'Marisol Starr',
+      role: 'Founder & Charity Director, Starr Wellness Collective',
+      quote:
+        'I highly recommend Asiya as an exceptional Web Optimization and SEO Specialist. During her internship at Starr Wellness Collective, Asiya profoundly enhanced our website functionality, user experience, and technical performance. She significantly boosted our technical SEO, optimized site speed, and resolved critical mobile display issues. Asiya also implemented key features like a gallery and testimonials to increase user engagement, and expertly integrated Google and Facebook tags for enhanced analytics. Her meticulous attention to detail and ability to drive tangible improvements in digital presence make her an invaluable asset to any team.',
     },
 
-    {
-      id: 2,
-      title: 'Nova App Prototype',
-      category: 'ux-ui',
-      description:
-        'A high-fidelity interactive mobile app prototype focused on intuitive navigation and smooth micro-interactions, designed to enhance user engagement and usability.',
-      role:     'UX Designer',
-      year:     '2024',
-      duration: '6 weeks',
-      overview: 'A high-fidelity interactive mobile prototype built entirely in Figma. The focus: make movement through the app feel inevitable — navigation that disappears because it never gets in the way.',
-      problem:  "Users were abandoning mobile apps not because features were missing, but because they couldn't find them. Deep menus, hidden drawers, and silent UI created disorientation at every level. The brief: design navigation so intuitive that users never have to think about navigating.",
-      insights: [
-        {
-          number: '01',
-          label: 'Disorientation kills retention',
-          body: "Users who couldn't locate themselves in the app hierarchy left within 30 seconds of hitting a dead end. The app felt broken — even when it wasn't.",
-        },
-        {
-          number: '02',
-          label: 'Three taps is the threshold',
-          body: 'Any action requiring more than three taps showed measurable drop in task completion. Each additional tap was less friction and more invitation to abandon.',
-        },
-        {
-          number: '03',
-          label: 'Feedback is navigation',
-          body: 'When a tap produced no visible response, users re-tapped — causing duplicate actions and confusion. Silence from the UI reads as system failure.',
-        },
-      ],
-      keyDecisions: [
-        {
-          versus:     'Hamburger menu',
-          decision:   'Persistent tab bar',
-          annotation: "Hamburger menus hide what's available until you look. A persistent tab bar makes the full navigation structure visible at all times — reducing the decision to a single glance, not a search.",
-        },
-        {
-          versus:     'Static screen transitions',
-          decision:   'Directional motion as spatial grammar',
-          annotation: 'Deeper screens enter from the right. Back navigation exits to the left. This spatial consistency lets users build a mental map of the app without ever needing a breadcrumb trail.',
-        },
-        {
-          versus:     'No interaction feedback',
-          decision:   'Every tap has a receipt',
-          annotation: "Micro-interactions aren't decoration — they're confirmation. A button that visibly responds tells the user the system heard them. Without this, users assume failure and re-tap.",
-        },
-      ],
-      image: novaImage,
-      tools: ['Figma'],
-      figmaLink: 'https://www.figma.com/proto/UvAsLdNld2MCbzXtuR1vs0/Nova?node-id=77-146&t=FkqBmv3TuovnIbCC-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=77%3A146&show-proto-sidebar=1',
-      liveLink: null,
-      githubLink: null,
-      presentationLink: novaPresentationPDF,
-      process: [
-        {
-          step: 'User Research',
-          detail: 'Analyzed user behavior and identified key navigation pain points to improve overall usability.',
-        },
-        {
-          step: 'User Flows',
-          detail: 'Designed clear user journeys to streamline navigation and reduce friction throughout the app experience.',
-        },
-        {
-          step: 'Prototyping',
-          detail: 'Built a high-fidelity interactive prototype in Figma with realistic transitions and micro-interactions.',
-        },
-        {
-          step: 'Testing & Iteration',
-          detail: 'Conducted usability testing and refined interactions based on user feedback.',
-        },
-      ],
-      retrospective: "Given more time, I would run a second round of usability testing with a more diverse participant group to pressure-test the navigation patterns. I'd also add a full accessibility annotation layer to the Figma file for a cleaner engineering handoff, and produce motion design specs — the micro-interaction intent was clear to me, but the prototype alone doesn't communicate timing values or easing curves precisely enough.",
-    },
+    retrospective:
+      'This internship strengthened my understanding that UX design extends far beyond creating visually appealing interfaces. I learned how user research, accessibility, information architecture, analytics, SEO, and performance optimization work together to create meaningful digital experiences. Working directly with a real client taught me how to communicate design decisions, balance stakeholder goals with user needs, and support those decisions using measurable data. Beyond redesigning the interface, I improved website performance, strengthened technical SEO, enhanced mobile usability, increased user engagement across multiple pages, significantly boosted contact form submissions, and ensured the site met Google Ad Grants requirements. Seeing measurable improvements in both user experience and organizational outcomes reinforced the importance of designing with both people and performance in mind.',
+  },
 
-    {
-      id: 3,
-      title: 'Starr Wellness Collective',
-      category: 'ux-ui',
-      role: 'UX / UI Design Intern',
-      year: '2024',
-      duration: 'Internship',
-      image: swcPlaceholder,
-      tools: ['Figma', 'Adobe Illustrator', 'Adobe Photoshop'],
-      liveLink: null,
-      figmaLink: null,
-      githubLink: null,
-      documents: [
-        { label: 'View Redesign Proposal', href: swcProposalPDF },
-        { label: 'View Case Study',        href: swcCaseStudyPDF },
-      ],
-      ctaHeading: 'The full redesign is documented.',
-      ctaSub: 'Review the proposal and complete case study.',
-      overview: 'A full website redesign completed during my internship at Starr Wellness Collective. The project began with a formal redesign proposal — establishing rationale, scope, and direction with the client — then moved through UX audit, information architecture, and a complete visual overhaul across every page of the site.',
-      problem: "The existing Starr Wellness Collective website didn't reflect the quality of the practice or the care behind the brand. Visitors couldn't easily navigate to services, understand what the collective offered, or take a clear next step. The brief: redesign the site so the digital experience matched the standard of care clients received in person.",
-      insights: [
-        {
-          number: '01',
-          label: 'Trust is the primary conversion driver',
-          body: 'Wellness clients seek practitioners, not just services. The site needed to communicate safety, expertise, and warmth before a visitor reached any service listing — the visual language had to do that work before a word was read.',
-        },
-        {
-          number: '02',
-          label: 'Navigation was burying key services',
-          body: 'Core offerings were two or three levels deep in the existing structure, requiring users to search for what should have been immediately findable. Every additional click was a reason to leave.',
-        },
-        {
-          number: '03',
-          label: 'Mobile-first was non-negotiable',
-          body: 'The majority of the site\'s traffic arrived on mobile. Every layout decision made with desktop-primary thinking was a direct barrier to the audience most likely to convert.',
-        },
-      ],
-      keyDecisions: [
-        {
-          versus: 'Starting with screens',
-          decision: 'Proposal before pixels',
-          annotation: 'Built a formal redesign proposal before opening Figma. Establishing rationale, scope, and visual direction with the client upfront prevented costly revisions and gave the work a clear mandate before any design investment was made.',
-        },
-        {
-          versus: 'Mirroring the org structure',
-          decision: 'Navigation built around user goals',
-          annotation: "Rebuilt the information architecture around what visitors came to do — find a therapist, learn about services, book an appointment — not around how the collective organized itself internally. The user's mental model, not the client's, drove every nav decision.",
-        },
-        {
-          versus: 'Generic wellness aesthetic',
-          decision: 'Grounded, credible visual language',
-          annotation: 'Moved away from the soft gradients and stock photography common to wellness brands toward a warmer but more professional visual identity. The design needed to communicate expertise alongside care — both qualities matter in a therapeutic context.',
-        },
-      ],
-      process: [
-        {
-          step: 'Discovery & Audit',
-          detail: 'Reviewed the existing site, identified UX gaps across navigation, hierarchy, and mobile layout, and documented the findings in a formal redesign proposal submitted to the client.',
-        },
-        {
-          step: 'Information Architecture',
-          detail: 'Restructured the site map and navigation to surface key services and reduce the depth of the content hierarchy — prioritizing the paths users actually take.',
-        },
-        {
-          step: 'Visual Design',
-          detail: 'Developed a refreshed visual identity: color system, typography, layout grid, and component library aligned to the brand\'s positioning in the wellness space.',
-        },
-        {
-          step: 'Full Redesign',
-          detail: 'Applied the design system across every page, producing a complete set of high-fidelity screens for the redesigned site.',
-        },
-      ],
-      retrospective: "Working within a real client relationship gave this project dimensions that classroom projects can't replicate. Scope decisions had to be justified, tone had to be calibrated for a professional audience, and the work had to stand on its own without me in the room explaining it. The formal proposal process was the most valuable part — it forced clarity before any visual work began and gave the client concrete input into the direction before significant effort was invested.",
-    },
+  {
+    id: 4,
+    title: 'Asiya’s Flowers',
+    category: 'web-design',
+  
+    role: 'Designer & Developer',
+    year: '2026',
+  
+    description:
+      'A responsive flower boutique website created for a low-code development course. Designed to establish a warm, elegant digital presence for a fictional floral business, the site includes homepage, about, services, gallery, and contact experiences. I designed and developed the interface while improving functionality through validated forms, user feedback states, and AI-assisted testing workflows.',
+  
+    image: flowerStockImage,
+  
+    tools: ['React', 'CSS', 'HTML5', 'Claude Code (AI-assisted workflow)'],
+  
+    liveLink: 'https://asiyaimtiaz21.github.io/asiyas-flowers/',
+    githubLink: 'https://github.com/asiyaimtiaz21/asiyas-flowers',
+  
+    overview:
+      'Asiya’s Flowers is a responsive mock boutique website designed to translate the feeling of a local flower shop into a digital experience. The goal for this concept was to create a warm, elegant, and trustworthy online presence through thoughtful branding, responsive layouts, and intuitive user interactions. Throughout development, I designed and built the website while improving functionality through a validated contact form, visual error feedback, success states, and automated testing workflows using Claude and browser developer tools.',
+  
+    problem:
+      'Small businesses rely heavily on their digital presence to communicate their brand and build trust with customers. The challenge was creating a website that felt personal and welcoming while maintaining usability, accessibility, and clear communication between the business and potential customers.',
+  
+    insights: [
+      {
+        number: '01',
+        label: 'Brand experience begins online',
+        body:
+          'A boutique website needs to communicate the feeling of the business before users ever visit in person. The visual design, typography, colors, and imagery were created to reflect the warmth and craftsmanship associated with a flower boutique.',
+      },
+      {
+        number: '02',
+        label: 'Small interactions build trust',
+        body:
+          'Features like contact form validation, error messages, and success feedback improve confidence by showing users that their actions are recognized and the system is responding correctly.',
+      },
+      {
+        number: '03',
+        label: 'Testing improves reliability',
+        body:
+          'Using browser developer tools and AI-assisted testing helped identify areas where functionality could be improved. Testing navigation behavior, links, and user interactions helped create a more dependable experience.',
+      },
+    ],
+  
+    keyDecisions: [
+      {
+        versus: 'Overly complex business features',
+        decision: 'Focused boutique experience',
+        annotation:
+          'Instead of adding unnecessary complexity, the website focused on presenting the brand, services, gallery, and contact experience clearly while maintaining a polished and approachable design.',
+      },
+      {
+        versus: 'Basic contact form',
+        decision: 'Validated user interaction',
+        annotation:
+          'The contact form was enhanced with required-field validation, visual error states, and success messaging to create a clearer and more user-friendly communication process.',
+      },
+      {
+        versus: 'Manual testing only',
+        decision: 'AI-assisted testing workflow',
+        annotation:
+          'Used Claude to generate testing ideas and evaluate existing functionality, then verified results through Chrome Developer Tools and repository-based testing workflows.',
+      },
+    ],
+  
+    process: [
+      {
+        step: 'Brand & Visual Design',
+        detail:
+          'Created a soft botanical visual identity with thoughtful typography, colors, imagery, and layouts that reflected the personality of a boutique flower business.',
+      },
+      {
+        step: 'Interface Development',
+        detail:
+          'Built responsive pages including the homepage, about section, services, gallery, and contact experience using React, HTML, and CSS.',
+      },
+      {
+        step: 'Form Enhancement',
+        detail:
+          'Improved the existing contact form by adding validation, required-field feedback, error handling, and successful submission messaging.',
+      },
+      {
+        step: 'Testing & Refinement',
+        detail:
+          'Used Claude-assisted testing ideas and Chrome Developer Tools to verify navigation behavior, DOM structure, link functionality, and user interactions.',
+      },
+    ],
+  
+    retrospective:
+      'Building Asiya’s Flowers helped me understand how visual design and functionality work together to create a trustworthy business experience. Beyond creating the interface, I gained experience improving user interactions through form validation, feedback states, and testing workflows. Using AI-assisted development and testing tools also showed me how emerging tools can support the development process while still requiring thoughtful design decisions. If I continued developing this project, I would expand the site with dynamic content management, seasonal flower collections, and a more complete ordering experience while maintaining the personal feel of a boutique brand.',
+  },
 
-    {
-      id: 4,
-      title: 'Flower Boutique',
-      category: 'web-design',
-      role: 'Designer & Developer',
-      year: '2025',
-      description: 'A responsive boutique website focused on elegant layout, branding, and smooth user experience.',
-      image: flowerStockImage,
-      tools: ['React', 'CSS', 'HTML5', 'Claude Code (AI-assisted workflow)'],
-      liveLink: 'https://asiyaimtiaz21.github.io/asiyas-flowers/',
-      githubLink: 'https://github.com/asiyaimtiaz21/asiyas-flowers',
-      overview: 'A responsive boutique website built to translate a local florist\'s brand online — elegant, warm, and immediately trustworthy to a first-time visitor. Handled both design and development end-to-end, using an AI-assisted workflow to maintain quality while moving at speed.',
-      problem: "Local boutiques often lose customers to larger platforms not because of price, but because their web presence doesn't match their in-store experience. The challenge was building a site that felt premium and personal — without the complexity and overhead of a full e-commerce system pulling focus from craft.",
-      insights: [
-        {
-          number: '01',
-          label: 'First impression is everything',
-          body: 'Boutique customers decide within seconds. The hero image, typeface, and color palette had to do the selling before a word was read — the UI needed to feel like the shop.',
-        },
-        {
-          number: '02',
-          label: 'Simplicity signals quality',
-          body: 'Cluttered layouts read as discount retail. White space, restrained color, and careful typography communicate craftsmanship without needing to say it explicitly.',
-        },
-        {
-          number: '03',
-          label: 'Mobile is the primary storefront',
-          body: 'Most local business discovery happens on a phone, often mid-errand. Every layout decision was made mobile-first, with desktop treated as an expansion rather than the default.',
-        },
-      ],
-      keyDecisions: [
-        {
-          versus: 'High-contrast brand colors',
-          decision: 'A soft, warm botanical palette',
-          annotation: 'A muted, warm color system over bold branding. High contrast reads as corporate; the softness of the palette communicates the hand-made, locally-sourced quality of a real flower boutique.',
-        },
-        {
-          versus: 'Rushing a commerce integration',
-          decision: 'A polished static site',
-          annotation: 'A well-crafted static site over a half-finished shopping experience. Premature e-commerce scope would have diluted the design quality — polish was the priority for a first version.',
-        },
-        {
-          versus: 'Solo development at full pace',
-          decision: 'AI-assisted development workflow',
-          annotation: 'Used Claude Code to accelerate responsive layout development, maintaining full creative control while compressing the timeline. The AI handled scaffolding; every visual decision remained deliberate.',
-        },
-      ],
-      process: [
-        { step: 'Art Direction', detail: 'Created a soft, elegant aesthetic aligned with boutique branding.' },
-        { step: 'Design System', detail: 'Defined typography, colors, and layout consistency.' },
-        { step: 'Development', detail: 'Built a responsive UI with smooth interactions and clean layout structure.' },
-      ],
-      retrospective: "What I'd improve today is making the site more flexible and closer to a real client-ready product. Right now, the content is static, and not hooked up to a database which limits how easily it could adapt to things like seasonal bouquets or new arrangements. I would also refine the shopping experience to feel more complete and intuitive, especially when it comes to browsing, selecting, and purchasing flowers.",
-    },
-
-    {
-      id: 5,
-      title: 'Study Planner',
-      category: 'web-design',
-      role: 'Designer & Developer',
-      year: '2025',
-      description: 'A productivity-focused web app designed to help students organize tasks and manage time effectively.',
-      image: studyStockImage,
-      tools: ['React', 'CSS', 'HTML5', 'localStorage', 'Claude Code (AI-assisted workflow)'],
-      liveLink: 'https://asiyaimtiaz21.github.io/study-planner-app/',
-      githubLink: 'https://github.com/asiyaimtiaz21/study-planner-app',
-      overview: 'A productivity web app built around how students actually work — not the idealized version. Designed to reduce friction between a student having a task and getting it recorded, organized, and tracked, without the overhead of a full project management tool.',
-      problem: "Most productivity tools are designed for knowledge workers, not students. The rhythms of student work — assignments, exams, semesters — don't map cleanly onto generic to-do lists. The result is tools that add overhead instead of removing it, and get abandoned within a week of installation.",
-      insights: [
-        {
-          number: '01',
-          label: 'Students abandon complex systems',
-          body: 'Tools with too many categories, views, or configuration options get discarded fast. The feature that keeps students coming back is not power — it\'s the absence of friction.',
-        },
-        {
-          number: '02',
-          label: 'Deadlines need to be visible',
-          body: 'Tasks without prominent due-date context carry no urgency signal. When deadlines are surfaced clearly, students act on tasks faster — the design creates the sense of priority, not the task itself.',
-        },
-        {
-          number: '03',
-          label: 'Task entry has to be instant',
-          body: 'Students add tasks between classes on their phones, not at a desk. If adding a task takes more than a few taps, it doesn\'t get added at all — it gets forgotten.',
-        },
-      ],
-      keyDecisions: [
-        {
-          versus: 'A server-side database',
-          decision: 'localStorage persistence',
-          annotation: 'Persistent local storage over a backend kept the app fast, private, and deployable without infrastructure. For a student tool, zero-latency data and no login requirement outweighed the trade-off of cross-device sync.',
-        },
-        {
-          versus: 'Subject-based organization',
-          decision: 'Deadline-first task layout',
-          annotation: 'Tasks sorted by deadline rather than by course reflect how students actually triage their workload — by when something is due, not by which class assigned it.',
-        },
-        {
-          versus: 'Desktop-first layout',
-          decision: 'Mobile-first design',
-          annotation: 'Designed for small screens first and expanded up. Student task management is spontaneous and mobile — a desktop-first layout would have produced an interface optimized for the wrong context.',
-        },
-      ],
-      process: [
-        { step: 'User Needs', detail: 'Identified key features needed for student productivity and time management.' },
-        { step: 'UI Design', detail: 'Designed a clean, distraction-free interface focused on usability.' },
-        { step: 'Development', detail: 'Built a responsive layout optimized for both desktop and mobile use.' },
-      ],
-      retrospective: "One area I would continue improving is making the task organization feel more dynamic and flexible for different study styles. While the current structure works well, I would explore adding more customization options for how tasks are grouped and viewed, so users could adapt the planner to things like exam prep, daily scheduling, or long-term projects. I'd also refine the overall user experience to make interactions feel even smoother and more intentional, especially around how tasks are created, edited, and visually prioritized within the interface.",
-    },
+  {
+    id: 5,
+    title: 'Study Planner',
+  
+    category: 'web-design',
+  
+    role: 'Designer & Developer',
+  
+    year: '2026',
+  
+    description:
+      'A productivity-focused student web application designed to help users organize assignments, manage study sessions, and build better study habits. The application combines task management, Pomodoro-style focus sessions, progress tracking, local data persistence, and an AI-powered study advice feature using a locally hosted LLM.',
+  
+    image: studyStockImage,
+  
+    tools: [
+      'HTML5',
+      'CSS',
+      'Vanilla JavaScript',
+      'localStorage',
+      'Ollama',
+      'Gemma 3:1B',
+      'Claude Code (AI-assisted workflow)'
+    ],
+  
+    liveLink: 'https://asiyaimtiaz21.github.io/study-planner-app/',
+  
+    githubLink: 'https://github.com/asiyaimtiaz21/study-planner-app',
+  
+    overview:
+      'Study Planner is a productivity web application designed around the everyday needs of students. The goal was to create a simple and effective system where students can track assignments, organize subjects, manage focused study sessions, and monitor progress without the complexity of traditional productivity tools. The application includes assignment tracking, a Pomodoro-style timer, subject organization, progress analytics, local data persistence, and an AI-powered study advice feature that analyzes pending assignments and provides personalized recommendations using a locally hosted language model.',
+  
+    problem:
+      'Students often struggle with managing multiple assignments, deadlines, and study schedules across different courses. Many productivity tools are either too generalized or require unnecessary setup, creating more friction instead of helping students stay organized. The challenge was designing a lightweight, accessible planner that supports student workflows while making organization and focus easier.',
+  
+    insights: [
+      {
+        number: '01',
+        label: 'Students need simplicity over complexity',
+        body:
+          'Students manage constantly changing workloads, deadlines, and priorities. A successful planning tool needs to reduce friction by making it quick and easy to record assignments, organize tasks, and view progress.',
+      },
+      {
+        number: '02',
+        label: 'Deadlines create motivation',
+        body:
+          'Assignments become easier to manage when deadlines and subjects are clearly visible. Organizing tasks around due dates helps students understand priorities and make informed decisions about their time.',
+      },
+      {
+        number: '03',
+        label: 'Personalized guidance improves planning',
+        body:
+          'Adding AI-powered study advice allowed the application to move beyond simple tracking by analyzing pending assignments and providing personalized suggestions based on the student’s workload.',
+      },
+    ],
+  
+    keyDecisions: [
+      {
+        versus: 'Complex productivity platforms',
+        decision: 'A focused student-centered workflow',
+        annotation:
+          'Instead of creating an overwhelming task management system, Study Planner focuses on the features students use most: assignments, subjects, study sessions, and progress tracking.',
+      },
+      {
+        versus: 'Server-based data storage',
+        decision: 'Local storage persistence',
+        annotation:
+          'Using browser localStorage allowed the application to save user data without requiring accounts or external infrastructure. This kept the experience fast, private, and accessible while maintaining persistence between sessions.',
+      },
+      {
+        versus: 'Generic productivity advice',
+        decision: 'AI-powered personalized recommendations',
+        annotation:
+          'The integrated AI feature uses Ollama and the Gemma 3:1B model locally to analyze pending assignments and generate customized study advice, creating a more supportive and personalized experience.',
+      },
+    ],
+  
+    process: [
+      {
+        step: 'Feature Planning',
+        detail:
+          'Identified essential student productivity needs and planned features including assignment tracking, study sessions, subject organization, progress tracking, and AI-assisted guidance.',
+      },
+      {
+        step: 'Interface Design',
+        detail:
+          'Designed a clean and responsive interface focused on reducing distractions while making important information such as deadlines and progress easy to understand.',
+      },
+      {
+        step: 'Development',
+        detail:
+          'Built the application using HTML5, CSS, and Vanilla JavaScript with localStorage-based data persistence to create a functional browser-based experience.',
+      },
+      {
+        step: 'AI Integration & Testing',
+        detail:
+          'Integrated a locally running Ollama model with the application to generate personalized study advice based on stored assignments. Tested functionality through iterative development and refinement.',
+      },
+    ],
+  
+    retrospective:
+      'Building Study Planner helped me understand how thoughtful functionality and user-centered design work together to create useful digital tools. Developing features such as assignment tracking, local persistence, and AI-generated study advice showed me how small interactions can improve the overall user experience. Integrating Ollama and a local language model was especially valuable because it helped me understand how AI features can be incorporated into applications while maintaining control over the workflow. If I continued developing the project, I would expand the AI capabilities by allowing it to consider assignment difficulty, deadlines, and workload priority when generating study recommendations. I would also explore additional customization options for different learning styles and study habits.',
+  },
 
     {
       id: 7,
       title: 'Sable Book Cover Series',
       category: 'graphic-design',
-      description: 'A collection of 18 mock book covers created to populate the Sable reading platform. Each design builds its own visual identity — genre, tone, and era — through typography and image composition alone.',
+      description: 'A collection of 18 mock book covers created to populate the Sable reading platform. Each design builds its own visual identity around genre, tone, and era through typography and image composition alone.',
       image: bookCover1,
       gallery: BOOK_COVERS,
       tools: ['Adobe Photoshop', 'Adobe Illustrator'],
@@ -382,33 +637,48 @@ const projects = [
 
     {
       id: 8,
-      title: 'Car Logo Design',
+    
+      title: 'Deluxe Auto Detailing Brand Identity',
+    
       category: 'graphic-design',
-      description: 'A complete logo identity delivered across four production-ready variants — color, white, black, and horizontal — for consistent use across all brand touchpoints.',
+    
+      description:
+        'A premium automotive brand identity redesign created for Deluxe Auto Detailing. The project transformed an existing simple logo into a more polished and memorable identity system through custom illustration, refined typography, and adaptable logo variations designed for digital and print applications.',
+    
       image: logoOnly,
+    
       logoVariants: CAR_LOGO_VARIANTS,
+    
       tools: ['Adobe Illustrator'],
+    
       liveLink: null,
+    
       githubLink: null,
+    
       process: [
         {
           step: 'Research & Discovery',
-          detail: '[Replace with your own text] Describe the brief here — the client, their industry, target audience, and the core values or feeling the logo needed to communicate before any sketching began.',
+          detail:
+            'Analyzed Deluxe Auto Detailing’s existing identity, target audience, and industry positioning to understand how the brand could better communicate precision, luxury, trust, and professional automotive care.',
         },
         {
           step: 'Concept Development',
-          detail: '[Replace with your own text] Walk through the ideation phase — how many directions you explored, what you were trying to communicate with each mark, and how you narrowed to this concept.',
+          detail:
+            'Explored different approaches for representing premium automotive detailing before developing a custom vehicle mark based on a 3/4 side profile luxury SUV silhouette inspired by high-end automotive design. The angled perspective created more depth and personality compared to the original front-facing vehicle graphic.',
         },
         {
           step: 'Refinement',
-          detail: '[Replace with your own text] Describe the iteration process — adjustments to proportion, stroke weight, spacing, and how the mark evolved from a rough concept to a polished final form.',
+          detail:
+            'Refined the vehicle illustration, typography, spacing, and overall composition to create a balanced and professional identity. The monochromatic black, gray, and white palette reinforced the premium positioning while maintaining versatility across different applications.',
         },
         {
           step: 'Production & Variants',
-          detail: '[Replace with your own text] Explain how the four logo variants were prepared — the decisions behind the color system, how the horizontal version was adapted, and what file formats were delivered.',
+          detail:
+            'Created a complete logo system with multiple production-ready variations, including the primary logo, black version, white version, and horizontal lockup. These formats allow the brand to maintain consistency across websites, social media, signage, print materials, apparel, and vehicle applications.',
         },
       ],
-      retrospective: '[Replace with your own text] Reflect on the project — what constraints shaped the design direction, what you would approach differently with more time, and what you are most proud of in the final mark.',
+      retrospective:
+        'This project challenged me to transform an existing logo into a complete brand identity while staying aligned with the client’s original vision. The main design challenge was creating a mark that communicated luxury and automotive expertise without becoming overly complicated. I am most proud of developing a cohesive identity system that combines a custom vehicle illustration, refined typography, and flexible logo variations to create a more professional and recognizable representation of Deluxe Auto Detailing.',
     },
 
   ];

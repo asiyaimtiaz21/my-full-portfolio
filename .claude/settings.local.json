@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node scrolltest.js)",
+      "Bash(node shots2.js)",
+      "Bash(node pdhero.js)",
+      "Bash(node aboutfocus.js)",
+      "Bash(node aboutvalues.js)",
+      "Bash(node aboutfinal.js)",
+      "Bash(pkill -f \"react-scripts start\")",
+      "Bash(node introimg.js)",
+      "Bash(node introimg2.js)",
+      "Skill(run)",
+      "Bash(BROWSER=none PORT=3457 nohup npm start)",
+      "Bash(disown)",
+      "Bash(break)",
+      "Bash(node -e \"require.resolve\\('playwright'\\)\")",
+      "Bash(npx --yes playwright --version)",
+      "Bash(npm init *)",
+      "Bash(npm install *)",
+      "Read(//tmp/**)",
+      "Read(//Users/asiyaimtiaz/Library/Caches/ms-playwright/chromium-1228/**)",
+      "Read(//Users/asiyaimtiaz/Library/Caches/ms-playwright/**)"
+    ]
+  }
+}

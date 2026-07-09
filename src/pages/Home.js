@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import useInView from '../hooks/useInView';
 import novaImage     from '../assets/images/nova-title.jpg';
 import sableImage    from '../assets/images/sable-title.jpg';
-import flowerImage   from '../assets/images/flower-title.jpg';
+import carLogoHorizontal from "../assets/images/graphic design/logo's/car logo/horizontal.png";
 import profileImage  from '../assets/images/profile-image-1.jpg';
 import photo1  from '../assets/images/photography/photo1.jpg';
 import photo4  from '../assets/images/photography/photo4.jpg';
@@ -28,11 +28,11 @@ const INDEX_PROJECTS = [
     image: novaImage,
   },
   {
-    id: 4, num: '03',
-    title: 'Flower Boutique',
-    category: 'Web Design',
-    tagline: 'Boutique identity, editorial detail.',
-    image: flowerImage,
+    id: 8, num: '03',
+    title: 'Deluxe Auto Detailing Brand Identity',
+    category: 'Graphic Design',
+    tagline: 'A logo rebuilt into a full identity system.',
+    image: carLogoHorizontal,
   },
 ];
 
@@ -154,7 +154,7 @@ export default function Home() {
           <div
             className={`h-index-preview${previewSrc ? ' is-visible' : ''}`}
             aria-hidden="true"
-            style={previewSrc ? { backgroundImage: `url(${previewSrc})` } : undefined}
+            style={previewSrc ? { backgroundImage: `url("${previewSrc}")` } : undefined}
           />
 
         </div>

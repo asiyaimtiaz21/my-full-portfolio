@@ -6,12 +6,12 @@ const categories = [
   {
     icon: '◈',
     title: 'Design',
-    skills: ['UX / UI Design', 'Visual Design', 'Graphic Design', 'Typography', 'Layout & Composition', 'Branding', 'Wireframing', 'Prototyping', 'Graphic Design', 'Responsive Design', 'User Research'],
+    skills: ['UX / UI Design', 'Visual Design', 'Graphic Design', 'Typography', 'Layout & Composition', 'Branding', 'Wireframing', 'Prototyping', 'Responsive Design', 'User Research'],
   },
   {
     icon: '◻',
     title: 'Development',
-    skills: ['HTML5', 'CSS', 'JavaScript', 'React', 'Front-End Development', 'Git', 'Github', 'WordPress', 'Webflow', 'GIihub'],
+    skills: ['HTML5', 'CSS', 'JavaScript', 'React', 'Front-End Development', 'Git', 'Github', 'WordPress', 'Webflow'],
   },
   {
     icon: '◇',
@@ -35,7 +35,7 @@ function Skills() {
         <div className="skills-divider" />
         <h1>Skills & Tools</h1>
         <p className="skills-intro">
-          A mix of design thinking, technical ability, and creative tools — built up through projects, study, and a lot of curiosity.
+          A mix of design thinking, technical ability, and creative tools that are built up through projects, study, and a lot of curiosity.
         </p>
         <a
           href={resumePDF}
