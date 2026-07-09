@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 import useInView from '../hooks/useInView';
 import './Contact.css';
 
@@ -22,15 +23,15 @@ const contactLinks = [
 
 function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [state, handleSubmit, resetForm] = useForm(process.env.REACT_APP_FORMSPREE_ID);
   const [bodyRef, bodyVisible] = useInView();
 
   const handleChange = (e) =>
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form submitted:', form);
-  };
+  useEffect(() => {
+    if (state.succeeded) setForm({ name: '', email: '', message: '' });
+  }, [state.succeeded]);
 
   return (
     <div className="contact-page">
@@ -75,47 +76,90 @@ function Contact() {
         </div>
 
         {/* ── Form ── */}
-        <form className="contact-form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="name">Name</label>
-            <input
-              id="name"
-              name="name"
-              type="text"
-              placeholder="Your name"
-              value={form.name}
-              onChange={handleChange}
-              required
-            />
+        {state.succeeded ? (
+          <div className="contact-form contact-form-success" role="status">
+            <span className="success-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none">
+                <circle cx="24" cy="24" r="23" stroke="currentColor" strokeWidth="1" />
+                <path
+                  d="M15 24.5L21 30.5L33 17.5"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>
+            <span className="eyebrow success-eyebrow">Message Sent</span>
+            <h3 className="success-heading">Thank you.</h3>
+            <p className="success-text">
+              Your message has been delivered — I'll get back to you within a day or two.
+            </p>
+            <button type="button" className="success-reset" onClick={resetForm}>
+              Send another message
+              <span aria-hidden="true">→</span>
+            </button>
           </div>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              placeholder="your@email.com"
-              value={form.email}
-              onChange={handleChange}
-              required
+        ) : (
+          <form className="contact-form" onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="name">Name</label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                placeholder="Your name"
+                value={form.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="your@email.com"
+                value={form.email}
+                onChange={handleChange}
+                required
+              />
+              <ValidationError
+                prefix="Email"
+                field="email"
+                errors={state.errors}
+                className="form-status form-status-error"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Tell me about your project..."
+                value={form.message}
+                onChange={handleChange}
+                required
+              />
+              <ValidationError
+                prefix="Message"
+                field="message"
+                errors={state.errors}
+                className="form-status form-status-error"
+              />
+            </div>
+            <button type="submit" className="form-submit" disabled={state.submitting}>
+              {state.submitting ? 'Sending...' : 'Send Message'}
+              <span aria-hidden="true">→</span>
+            </button>
+
+            <ValidationError
+              errors={state.errors}
+              className="form-status form-status-error"
             />
-          </div>
-          <div className="form-group">
-            <label htmlFor="message">Message</label>
-            <textarea
-              id="message"
-              name="message"
-              placeholder="Tell me about your project..."
-              value={form.message}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <button type="submit" className="form-submit">
-            Send Message
-            <span aria-hidden="true">→</span>
-          </button>
-        </form>
+          </form>
+        )}
 
       </div>
     </div>
