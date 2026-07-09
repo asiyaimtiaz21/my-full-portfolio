@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/my-full-portfolio/static/css/main.acba1f13.css",
-    "main.js": "/my-full-portfolio/static/js/main.d30c4a52.js",
+    "main.js": "/my-full-portfolio/static/js/main.ad8c04f0.js",
     "static/media/Nova - Midterm Presentation .pdf": "/my-full-portfolio/static/media/Nova - Midterm Presentation .a7f5eef43326f2120a45.pdf",
     "static/media/swc.pdf": "/my-full-portfolio/static/media/swc.070433549f393c5d87a3.pdf",
     "static/media/3.png": "/my-full-portfolio/static/media/3.e4bbe7ff9ed5767fee42.png",
@@ -55,10 +55,10 @@
     "static/media/coming-soon.svg": "/my-full-portfolio/static/media/coming-soon.12513a599bcb1e6c3b7abd1f4452a3ea.svg",
     "index.html": "/my-full-portfolio/index.html",
     "main.acba1f13.css.map": "/my-full-portfolio/static/css/main.acba1f13.css.map",
-    "main.d30c4a52.js.map": "/my-full-portfolio/static/js/main.d30c4a52.js.map"
+    "main.ad8c04f0.js.map": "/my-full-portfolio/static/js/main.ad8c04f0.js.map"
   },
   "entrypoints": [
     "static/css/main.acba1f13.css",
-    "static/js/main.d30c4a52.js"
+    "static/js/main.ad8c04f0.js"
   ]
 }
