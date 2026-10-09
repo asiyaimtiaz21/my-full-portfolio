@@ -83,7 +83,7 @@ export default function Home() {
           </p>
 
           <p className="h-hero-statement">
-            Hi there! I am Asiya Imtiaz, a digital designer based in Central Florida with a background in Digital Media in web and interactive media. My focus is to create designs that are not only creative and immersive, but {' '}
+            Hi there! I am Asiya Imtiaz, a digital designer based in Central Florida with a background in Digital Media - Web and Interactive Media. My focus is to create designs that are not only creative and immersive, but {' '}
             <em>meaningful</em> as well.
           </p>
 

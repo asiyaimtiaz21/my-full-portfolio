@@ -3,12 +3,12 @@
 ═══════════════════════════════════════════════════════ */
 
 .photography-page {
-  min-height: calc(100vh - 64px);
+  min-height: calc(100vh - 96px);
 }
 
 /* ── Header ──────────────────────────────────────────── */
 .photography-header {
-  padding: var(--space-12) var(--space-10) var(--space-10);
+  padding: var(--space-8) var(--space-10);
   border-bottom: 1px solid var(--border);
 }
 
@@ -36,18 +36,55 @@
   line-height: 1.8;
   color: var(--ink-3);
   max-width: 52ch;
-  margin: 0 0 var(--space-10);
+  margin: 0;
   animation: revealUp var(--dur-slow) var(--ease-out) 180ms both;
 }
 
-/* ── Portfolio CTA ───────────────────────────────────── */
-.photography-portfolio-cta {
+/* ── Title row — header text on the left, logo on the right ── */
+.photography-title-row {
   display: flex;
   align-items: center;
+  gap: var(--space-10);
+}
+
+/* Text column fills all space up to the logo — no dead gap in the middle */
+.photography-title-text {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Logo — 3× the original 108px circle ── */
+.photography-logo-wrap {
+  flex-shrink: 0;
+  width: 324px;
+  height: 324px;
+  border-radius: 50%;
+  background: var(--ink);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: revealFade var(--dur-slow) var(--ease-out) 120ms both;
+}
+
+.photography-logo {
+  display: block;
+  /* Same inset as the original (14px in 108px), scales with the circle */
+  width: 74%;
+  height: 74%;
+  object-fit: contain;
+}
+
+/* ── Portfolio CTA — sits under the intro, spans the text column ── */
+.photography-portfolio-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
-  gap: var(--space-8);
-  border: 1px solid var(--border);
-  padding: var(--space-6) var(--space-8);
+  gap: var(--space-5) var(--space-8);
+  margin-top: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--border);
   animation: revealUp var(--dur-slow) var(--ease-out) 240ms both;
 }
 
@@ -68,7 +105,7 @@
   line-height: 1.7;
   color: var(--ink-3);
   margin: 0;
-  max-width: 52ch;
+  max-width: 44ch;
 }
 
 .photography-cta-text p strong {
@@ -99,6 +136,7 @@
 
 .photography-portfolio-btn:hover {
   background: var(--accent);
+  color: var(--ink);
   transform: translateY(-2px);
 }
 
@@ -106,7 +144,7 @@
 .photography-grid {
   columns: 3;
   column-gap: var(--space-3);
-  padding: var(--space-8) var(--space-10);
+  padding: var(--space-6) var(--space-10) var(--space-10);
 }
 
 /* ── Photo item ──────────────────────────────────────── */
@@ -134,7 +172,7 @@
 .photo-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(26, 21, 16, 0.60);
+  background: rgba(14, 14, 14, 0.60);
   opacity: 0;
   transition: opacity var(--dur-base) var(--ease-out);
   display: flex;
@@ -165,7 +203,7 @@
   position: fixed;
   inset: 0;
   z-index: 1000;
-  background-color: rgba(10, 8, 6, 0.96);
+  background-color: rgba(14, 14, 14, 0.96);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -193,7 +231,7 @@
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(242, 237, 230, 0.35);
+  color: rgba(247, 239, 221, 0.35);
   margin: var(--space-4) 0 0;
 }
 
@@ -201,9 +239,9 @@
   position: fixed;
   top: max(1.5rem, env(safe-area-inset-top, 1.5rem));
   right: 1.75rem;
-  background: rgba(242, 237, 230, 0.08);
-  border: 1px solid rgba(242, 237, 230, 0.14);
-  color: rgba(242, 237, 230, 0.6);
+  background: rgba(247, 239, 221, 0.08);
+  border: 1px solid rgba(247, 239, 221, 0.14);
+  color: rgba(247, 239, 221, 0.6);
   font-size: 1rem;
   cursor: pointer;
   min-width: 44px;
@@ -218,7 +256,7 @@
 }
 
 .lightbox-close:hover {
-  background: rgba(242, 237, 230, 0.18);
+  background: rgba(247, 239, 221, 0.18);
   color: var(--ground);
 }
 
@@ -226,9 +264,9 @@
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(242, 237, 230, 0.06);
-  border: 1px solid rgba(242, 237, 230, 0.10);
-  color: rgba(242, 237, 230, 0.45);
+  background: rgba(247, 239, 221, 0.06);
+  border: 1px solid rgba(247, 239, 221, 0.10);
+  color: rgba(247, 239, 221, 0.45);
   font-size: 2rem;
   line-height: 1;
   cursor: pointer;
@@ -245,7 +283,7 @@
 }
 
 .lightbox-nav:hover {
-  background: rgba(242, 237, 230, 0.14);
+  background: rgba(247, 239, 221, 0.14);
   color: var(--ground);
 }
 
@@ -253,36 +291,65 @@
 .lightbox-next { right: 1rem; }
 
 /* ── Responsive ──────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .photography-logo-wrap {
+    width: 260px;
+    height: 260px;
+  }
+}
+
 @media (max-width: 860px) {
   .photography-header {
-    padding: var(--space-10) var(--space-8) var(--space-8);
+    padding: var(--space-8);
+  }
+
+  .photography-title-row {
+    gap: var(--space-6);
+  }
+
+  .photography-logo-wrap {
+    width: 200px;
+    height: 200px;
   }
 
   .photography-grid {
     columns: 2;
     column-gap: var(--space-3);
-    padding: var(--space-6) var(--space-8);
-  }
-
-  .photography-portfolio-cta {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-5);
-  }
-
-  .photography-portfolio-btn {
-    align-self: flex-start;
+    padding: var(--space-5) var(--space-8) var(--space-8);
   }
 }
 
 @media (max-width: 640px) {
   .photography-header {
-    padding: var(--space-8) var(--space-5) var(--space-6);
+    padding: var(--space-6) var(--space-5);
   }
 
-  .photography-portfolio-cta {
-    padding: var(--space-5);
+  /* Logo stays beside the heading; intro + CTA run full width below */
+  .photography-title-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "eyebrow eyebrow"
+      "heading logo"
+      "intro   intro"
+      "cta     cta";
+    gap: 0 var(--space-4);
+    align-items: center;
   }
+
+  .photography-title-text { display: contents; }
+  .photography-header .eyebrow { grid-area: eyebrow; margin-bottom: var(--space-2); }
+  .photography-heading         { grid-area: heading; margin: 0; }
+  .photography-intro           { grid-area: intro; margin-top: var(--space-4); }
+  .photography-portfolio-cta   { grid-area: cta; }
+
+  .photography-logo-wrap {
+    grid-area: logo;
+    width: 96px;
+    height: 96px;
+  }
+
+  .photography-cta-text .eyebrow { grid-area: auto; }
 
   .photography-grid {
     columns: 1;
@@ -290,7 +357,7 @@
   }
 
   .photography-portfolio-btn {
-    align-self: stretch;
+    width: 100%;
     justify-content: center;
   }
 }

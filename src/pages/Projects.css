@@ -2,8 +2,8 @@
    PROJECTS PAGE
 ═══════════════════════════════════════════════════════ */
 .projects-page {
-  min-height: calc(100vh - 64px);
-  min-height: calc(100svh - 64px);
+  min-height: calc(100vh - 96px);
+  min-height: calc(100svh - 96px);
 }
 
 /* ── Page header ──────────────────────────────────────── */
@@ -42,7 +42,7 @@
 /* ── Sticky filter bar ────────────────────────────────── */
 .projects-filters-wrapper {
   position: sticky;
-  top: 64px;
+  top: 96px;
   z-index: 10;
   background-color: var(--ground);
   border-bottom: 1px solid var(--border);
@@ -82,7 +82,13 @@
 
 /* ── Content area ─────────────────────────────────────── */
 .projects-content {
-  padding: 0 var(--space-10) var(--space-16);
+  --projects-gutter: var(--space-10);
+  padding: 0 var(--projects-gutter) var(--space-16);
+}
+
+/* Grouped view ends on a full-bleed colour band — no cream strip below it */
+.projects-content:has(> .projects-grouped) {
+  padding-bottom: 0;
 }
 
 /* ── Grouped view ─────────────────────────────────────── */
@@ -151,7 +157,7 @@
 }
 
 .projects-section-heading a:hover {
-  color: var(--accent);
+  color: var(--accent-deep);
 }
 
 .projects-section-arrow {
@@ -221,11 +227,11 @@
 /* ── Page header — dark ink ──────────────────────────── */
 .projects-header {
   background-color: var(--ink);
-  border-bottom: 1px solid rgba(242, 237, 230, 0.08);
+  border-bottom: 1px solid rgba(247, 239, 221, 0.08);
 }
 
 .projects-header .eyebrow {
-  color: rgba(242, 237, 230, 0.45);
+  color: rgba(247, 239, 221, 0.45);
 }
 
 .projects-h1 {
@@ -233,12 +239,12 @@
 }
 
 .projects-sub {
-  color: rgba(242, 237, 230, 0.55);
+  color: rgba(247, 239, 221, 0.55);
 }
 
 /* Section count — accent colour to add vibrancy in content area */
 .projects-section-count {
-  color: var(--accent);
+  color: var(--accent-deep);
 }
 
 /* ── Alternating section color bands ─────────────────── */
@@ -248,10 +254,10 @@
    it as inner padding so content stays aligned. */
 .projects-section:nth-child(2),
 .projects-section:nth-child(3) {
-  margin-left:  calc(-1 * var(--space-10));
-  margin-right: calc(-1 * var(--space-10));
-  padding-left:  var(--space-10);
-  padding-right: var(--space-10);
+  margin-left:  calc(-1 * var(--projects-gutter));
+  margin-right: calc(-1 * var(--projects-gutter));
+  padding-left:  var(--projects-gutter);
+  padding-right: var(--projects-gutter);
 }
 
 /* UX / UI Design — dark ink band */
@@ -261,7 +267,7 @@
 }
 
 .projects-section:nth-child(2) .projects-section-index {
-  color: rgba(242, 237, 230, 0.25);
+  color: rgba(247, 239, 221, 0.25);
 }
 
 .projects-section:nth-child(2) .projects-section-heading {
@@ -277,11 +283,11 @@
 }
 
 .projects-section:nth-child(2) .eyebrow {
-  color: rgba(242, 237, 230, 0.40);
+  color: rgba(247, 239, 221, 0.40);
 }
 
 .projects-section:nth-child(2) .pc-body {
-  border-top-color: rgba(242, 237, 230, 0.10);
+  border-top-color: rgba(247, 239, 221, 0.10);
 }
 
 .projects-section:nth-child(2) .pc-title {
@@ -294,17 +300,17 @@
 }
 
 .projects-section:nth-child(2) .pc-external {
-  color: rgba(242, 237, 230, 0.45);
-  border-bottom-color: rgba(242, 237, 230, 0.18);
+  color: rgba(247, 239, 221, 0.45);
+  border-bottom-color: rgba(247, 239, 221, 0.18);
 }
 
 .projects-section:nth-child(2) .pc-external:hover {
   color: var(--ground);
-  border-bottom-color: rgba(242, 237, 230, 0.50);
+  border-bottom-color: rgba(247, 239, 221, 0.50);
 }
 
 .projects-section:nth-child(2) .pc-description {
-  color: rgba(242, 237, 230, 0.45);
+  color: rgba(247, 239, 221, 0.45);
 }
 
 /* Graphic Design — rose accent band */
@@ -322,11 +328,11 @@
 }
 
 .projects-section:nth-child(3) .gallery-entry {
-  border-top-color: rgba(181, 96, 110, 0.22);
+  border-top-color: rgba(129, 96, 29, 0.3);
 }
 
 .projects-section:nth-child(3) .logo-entry {
-  border-top-color: rgba(181, 96, 110, 0.22);
+  border-top-color: rgba(129, 96, 29, 0.3);
 }
 
 
@@ -343,7 +349,8 @@
   }
 
   .projects-content {
-    padding: 0 var(--space-8) var(--space-12);
+    --projects-gutter: var(--space-8);
+    padding: 0 var(--projects-gutter) var(--space-12);
   }
 
   .projects-grid {
@@ -379,7 +386,8 @@
   }
 
   .projects-content {
-    padding: 0 var(--space-5) var(--space-10);
+    --projects-gutter: var(--space-5);
+    padding: 0 var(--projects-gutter) var(--space-10);
   }
 
   .projects-grouped {
@@ -470,7 +478,7 @@
 }
 
 .gallery-entry-title-link:hover .gallery-entry-title {
-  color: var(--accent);
+  color: var(--accent-deep);
 }
 
 .gallery-entry-desc {
@@ -600,7 +608,7 @@
 }
 
 .logo-entry-title-link:hover .logo-entry-title {
-  color: var(--accent);
+  color: var(--accent-deep);
 }
 
 .logo-entry-desc {

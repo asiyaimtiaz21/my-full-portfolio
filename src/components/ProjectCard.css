@@ -90,7 +90,7 @@
 .pc-scrim {
   position: absolute;
   inset: 0;
-  background-color: rgba(26, 21, 16, 0);
+  background-color: rgba(14, 14, 14, 0);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -99,7 +99,7 @@
 }
 
 .project-card--featured:hover .pc-scrim {
-  background-color: rgba(26, 21, 16, 0.42);
+  background-color: rgba(14, 14, 14, 0.42);
 }
 
 .pc-scrim-label {
@@ -154,7 +154,7 @@
 }
 
 .project-card--featured:hover .pc-title {
-  color: var(--accent);
+  color: var(--accent-deep);
 }
 
 /* External link — aligned to title baseline */
@@ -218,7 +218,7 @@
 }
 
 .project-card--secondary:hover .pc-title {
-  color: var(--accent);
+  color: var(--accent-deep);
 }
 
 /* Title row — title and external link side by side */

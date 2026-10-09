@@ -3,14 +3,14 @@
 ═══════════════════════════════════════════════════════ */
 
 .about-page {
-  min-height: calc(100vh - 64px);
+  min-height: calc(100vh - 96px);
 }
 
 /* ── Intro — full-bleed split: image | text ──────────── */
 .about-intro {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: calc(100vh - 64px);
+  min-height: calc(100vh - 96px);
 }
 
 .about-intro-image {
@@ -31,7 +31,7 @@
   max-height: calc(100% - var(--space-8) * 2);
   display: block;
   border-radius: 22px;
-  border: 1.5px solid rgba(242, 237, 230, 0.16);
+  border: 1.5px solid rgba(247, 239, 221, 0.16);
   box-shadow:
     0 24px 60px rgba(0, 0, 0, 0.55),
     0 8px 20px rgba(0, 0, 0, 0.35);
@@ -88,7 +88,7 @@
 
 .about-focus-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   border-top: 1px solid var(--border);
 }
 
@@ -197,19 +197,19 @@
 }
 
 .about-focus-section > .eyebrow {
-  color: rgba(242, 237, 230, 0.45);
+  color: rgba(247, 239, 221, 0.45);
 }
 
 .about-focus-grid {
-  border-top-color: rgba(242, 237, 230, 0.10);
+  border-top-color: rgba(247, 239, 221, 0.10);
 }
 
 .focus-card {
-  border-right-color: rgba(242, 237, 230, 0.10);
+  border-right-color: rgba(247, 239, 221, 0.10);
 }
 
 .focus-card-icon {
-  color: rgba(242, 237, 230, 0.28);
+  color: rgba(247, 239, 221, 0.28);
 }
 
 .focus-card h3 {
@@ -217,7 +217,7 @@
 }
 
 .focus-card p {
-  color: rgba(242, 237, 230, 0.52);
+  color: rgba(247, 239, 221, 0.52);
 }
 
 /* ── Values strip — rose accent ──────────────────────── */
@@ -227,7 +227,7 @@
 }
 
 .about-value {
-  border-right-color: rgba(26, 21, 16, 0.18);
+  border-right-color: rgba(14, 14, 14, 0.18);
 }
 
 .about-value-label {
@@ -243,7 +243,7 @@
 
   .focus-card {
     border-right: none;
-    border-top: 1px solid rgba(242, 237, 230, 0.10);
+    border-top: 1px solid rgba(247, 239, 221, 0.10);
     padding: var(--space-6) 0;
     grid-column: unset;
   }

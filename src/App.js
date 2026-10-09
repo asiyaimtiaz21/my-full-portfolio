@@ -46,7 +46,7 @@ function App() {
     <HashRouter>
       <ScrollToTop />
       <Navbar />
-      <div style={{ paddingTop: '64px' }}>
+      <div style={{ paddingTop: '96px' }}>
         <AnimatedRoutes />
         <Footer />
       </div>

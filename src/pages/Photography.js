@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import useInView from '../hooks/useInView';
+import pxPrimeLogo from '../assets/Logo files/Primary Stretched Logo Big Size/1x/Stetched text (YES).png';
 import './Photography.css';
 
 import photo1  from '../assets/images/photography/photo1.jpg';
@@ -75,28 +76,39 @@ function Photography() {
 
       {/* ── Header ── */}
       <header className="photography-header">
-        <span className="eyebrow">Visual Work</span>
-        <h1 className="photography-heading">Photography</h1>
-        <p className="photography-intro">
-          Photography is how I slow down and pay attention. A collection of my favorite works; stories and moments captured along the way.
-        </p>
-
-        <div className="photography-portfolio-cta">
-          <div className="photography-cta-text">
-            <span className="eyebrow">Full Portfolio</span>
-            <p>
-              Visit <strong>Imtiaz Imagez</strong> to browse my complete photography portfolio — portraits, landscapes, and editorial work.
+        <div className="photography-title-row">
+          <div className="photography-title-text">
+            <span className="eyebrow">Visual Work</span>
+            <h1 className="photography-heading">Photography</h1>
+            <p className="photography-intro">
+              Photography is how I slow down and pay attention. A collection of my favorite works; stories and moments captured along the way.
             </p>
+
+            <div className="photography-portfolio-cta">
+              <div className="photography-cta-text">
+                <span className="eyebrow">Full Portfolio</span>
+                <p>
+                  Visit <strong>Imtiaz Imagez</strong> to browse my complete photography portfolio — portraits, landscapes, and editorial work.
+                </p>
+              </div>
+              <a
+                href="https://imtiazimagez.myportfolio.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="photography-portfolio-btn"
+              >
+                Visit Imtiaz Imagez
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
           </div>
-          <a
-            href="https://imtiazimagez.myportfolio.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="photography-portfolio-btn"
-          >
-            Visit Imtiaz Imagez
-            <span aria-hidden="true">↗</span>
-          </a>
+          <div className="photography-logo-wrap">
+            <img
+              src={pxPrimeLogo}
+              alt="Imtiaz Imagez logo"
+              className="photography-logo"
+            />
+          </div>
         </div>
       </header>
 

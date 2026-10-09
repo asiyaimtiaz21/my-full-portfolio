@@ -3,7 +3,7 @@
 ═══════════════════════════════════════════════════════ */
 
 .contact-page {
-  min-height: calc(100vh - 64px);
+  min-height: calc(100vh - 96px);
 }
 
 /* ── Header ──────────────────────────────────────────── */
@@ -54,7 +54,7 @@
 
 .contact-links-eyebrow {
   display: block;
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-5);
 }
 
 .contact-links {
@@ -200,6 +200,7 @@
 
 .form-submit:hover {
   background: var(--accent);
+  color: var(--ink);
   transform: translateY(-2px);
 }
 
@@ -220,7 +221,7 @@
 .success-icon {
   width: 44px;
   height: 44px;
-  color: var(--accent);
+  color: var(--accent-deep);
   margin-bottom: var(--space-6);
   animation: revealUp var(--dur-slow) var(--ease-out) both;
 }

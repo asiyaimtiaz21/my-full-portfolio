@@ -18,6 +18,11 @@ const focusAreas = [
     title: 'Graphic Design',
     description: 'Creating visual solutions that communicate messages, build brand identities, and capture attention. I focus on the use of typography, color, composition, and visual storytelling to create designs that are memorable, consistent, and impactful across digital and print platforms.',
   },
+  {
+    icon: '○',
+    title: 'Photography',
+    description: 'Capturing moments and stories through a thoughtful eye for light, composition, and detail. I focus on portrait, lifestyle, and editorial photography, bringing the same attention to visual storytelling that shapes my design work.',
+  },
 ];
 
 const values = [

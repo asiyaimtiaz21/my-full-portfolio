@@ -2,32 +2,32 @@
 
   /* ═══════════════════════════════════════════
      STAGE — background surfaces
-     The cream ground is the stage. Work performs on it.
+     The gold-washed cream ground is the stage. Work performs on it.
   ═══════════════════════════════════════════ */
-  --ground:           #F2EDE6;   /* Warm cream — primary background */
-  --ground-subtle:    #EAE4DC;   /* Slightly deeper — surface variation */
+  --ground:           #F7EFDD;   /* Warm gold-tinted cream — primary background */
+  --ground-subtle:    #EFE2C3;   /* Deeper gold wash — surface variation */
   --surface:          #FFFFFF;   /* Pure white — elevated cards */
 
   /* ═══════════════════════════════════════════
      INK — four-level text hierarchy
   ═══════════════════════════════════════════ */
-  --ink:              #1A1510;   /* Warm dark — headlines, primary text */
-  --ink-2:            #3D3830;   /* Body text */
-  --ink-3:            #7A8394;   /* Cool grey — metadata, captions, muted */
-  --ink-4:            #A8AFBB;   /* Lightest — decorative labels only */
+  --ink:              #0E0E0E;   /* Brand black — headlines, primary text */
+  --ink-2:            #2B2620;   /* Body text */
+  --ink-3:            #8C8370;   /* Warm grey — metadata, captions, muted */
+  --ink-4:            #C2B79C;   /* Lightest — decorative labels only */
 
   /* ═══════════════════════════════════════════
-     ACCENT — one signature color, used sparingly
-     Its scarcity is what gives it meaning.
+     ACCENT — signature brand gold
   ═══════════════════════════════════════════ */
-  --accent:           #B5606E;   /* Deep dusty rose */
-  --accent-subtle:    #EDD8DA;   /* Faint rose — hover backgrounds only */
+  --accent:           #E8C17A;   /* Brand gold */
+  --accent-deep:      #81601D;   /* Deepened gold/bronze — text & accents on light grounds, for readability */
+  --accent-subtle:    #F0DDAE;   /* Faint gold — hover backgrounds only */
 
   /* ═══════════════════════════════════════════
      BORDERS
   ═══════════════════════════════════════════ */
-  --border:           rgba(26, 21, 16, 0.10);
-  --border-strong:    rgba(26, 21, 16, 0.22);
+  --border:           rgba(14, 14, 14, 0.10);
+  --border-strong:    rgba(14, 14, 14, 0.22);
 
   /* ═══════════════════════════════════════════
      TYPOGRAPHY
@@ -81,12 +81,12 @@
   /* ═══════════════════════════════════════════
      ELEVATION — warm shadows, not rose-tinted
   ═══════════════════════════════════════════ */
-  --shadow-sm:  0 1px 4px  rgba(26, 21, 16, 0.07),
-                0 1px 2px  rgba(26, 21, 16, 0.04);
-  --shadow-md:  0 4px 16px rgba(26, 21, 16, 0.09),
-                0 2px 4px  rgba(26, 21, 16, 0.05);
-  --shadow-lg:  0 12px 40px rgba(26, 21, 16, 0.11),
-                0 4px  8px  rgba(26, 21, 16, 0.06);
+  --shadow-sm:  0 1px 4px  rgba(14, 14, 14, 0.07),
+                0 1px 2px  rgba(14, 14, 14, 0.04);
+  --shadow-md:  0 4px 16px rgba(14, 14, 14, 0.09),
+                0 2px 4px  rgba(14, 14, 14, 0.05);
+  --shadow-lg:  0 12px 40px rgba(14, 14, 14, 0.11),
+                0 4px  8px  rgba(14, 14, 14, 0.06);
 
   /* ═══════════════════════════════════════════
      MOTION — deliberate, always decelerating
@@ -109,7 +109,7 @@
 
   /* Color aliases */
   --primary:        var(--accent);
-  --primary-dark:   #913848;
+  --primary-dark:   var(--accent-deep);
   --primary-light:  var(--accent-subtle);
   --bg-cream:       var(--ground);
   --bg-warm:        var(--ground-subtle);

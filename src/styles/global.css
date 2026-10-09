@@ -118,7 +118,7 @@ button {
    FOCUS
 ═══════════════════════════════════════════════════ */
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--accent-deep);
   outline-offset: 3px;
   border-radius: var(--radius-sm);
 }
@@ -209,6 +209,7 @@ button {
 .btn-primary:hover {
   background-color: var(--accent);
   border-color: var(--accent);
+  color: var(--ink);
 }
 
 /* Outline — structured, not decorative */
@@ -250,8 +251,8 @@ button {
 }
 
 .link:hover {
-  color: var(--accent);
-  border-color: var(--accent);
+  color: var(--accent-deep);
+  border-color: var(--accent-deep);
 }
 
 /* ═══════════════════════════════════════════════════

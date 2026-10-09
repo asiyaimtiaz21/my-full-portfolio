@@ -26,10 +26,11 @@
   display: grid;
   grid-template-columns: 57% 43%;
   grid-template-rows: 1fr auto;
-  height: calc(100vh - 64px);
-  height: calc(100svh - 64px);
+  height: calc(100vh - 96px);
+  height: calc(100svh - 96px);
   min-height: 520px;
   overflow: hidden;
+  background-color: var(--accent);
 }
 
 /* ── Left column ─────────────────────────────────────────────── */
@@ -50,7 +51,7 @@
   font-family: var(--font-body);
   font-size: var(--text-xs);
   font-weight: 400;
-  color: var(--ink-4);
+  color: var(--ink-2);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   margin: 0 0 var(--space-6);
@@ -61,7 +62,7 @@
   display: block;
   flex: 1;
   height: 1px;
-  background-color: var(--border);
+  background-color: var(--ink);
   max-width: 4rem;
 }
 
@@ -104,7 +105,7 @@
   font-family: var(--font-body);
   font-size: var(--text-xs);
   font-weight: 500;
-  color: var(--ink-3);
+  color: var(--ink-2);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   margin: 0;
@@ -113,7 +114,7 @@
 }
 
 .h-disc-dot {
-  color: var(--ink-4);
+  color: var(--accent-deep);
   font-size: 8px;
   line-height: 1;
 }
@@ -124,7 +125,7 @@
   font-size: var(--text-lg);
 ;
   line-height: 1.7;
-  color: var(--ink-3);
+  color: var(--ink-2);
   max-width: 36ch;
   margin: var(--space-5) 0 0;
   animation: revealUp var(--dur-slow) var(--ease-out) 380ms both;
@@ -132,7 +133,7 @@
 
 .h-hero-statement em {
   font-style: italic;
-  color: var(--ink-2);
+  color: var(--ink);
 }
 
 /* ── Right column — portrait introduction ────────────────────── */
@@ -162,7 +163,7 @@
   flex-shrink: 0;
   box-shadow:
     0 0 0 2.5px var(--ink),
-    0 0 0 10px var(--ground),
+    0 0 0 10px var(--accent),
     0 0 0 11.5px var(--border-strong);
 }
 
@@ -217,7 +218,7 @@
   display: block;
   flex: 1;
   height: 1px;
-  background-color: var(--border);
+  background-color: var(--ink);
   margin: 0 var(--space-5);
 }
 
@@ -225,7 +226,7 @@
   font-family: var(--font-body);
   font-size: var(--text-xs);
   font-weight: 400;
-  color: var(--ink-4);
+  color: var(--ink-2);
   letter-spacing: 0.10em;
   text-transform: uppercase;
   flex-shrink: 0;
@@ -318,8 +319,8 @@
   inset: 0;
   background: linear-gradient(
     to right,
-    #F2EDE6 0%,
-    rgba(242, 237, 230, 0.30) 20%,
+    var(--ground) 0%,
+    rgba(247, 239, 221, 0.30) 20%,
     transparent 46%
   );
   pointer-events: none;
@@ -387,7 +388,7 @@
 }
 
 .h-index-item:hover .h-idx-title {
-  color: var(--accent);
+  color: var(--accent-deep);
 }
 
 .h-idx-tagline {
@@ -420,7 +421,7 @@
 
 .h-index-item:hover .h-idx-arrow {
   transform: translateX(5px);
-  color: var(--accent);
+  color: var(--accent-deep);
 }
 
 
@@ -450,7 +451,7 @@
 /* The accent word — earned scarcity */
 .h-stat-text em {
   font-style: inherit;
-  color: var(--accent);
+  color: var(--accent-deep);
 }
 
 .h-stat-link {
@@ -563,7 +564,7 @@
 }
 
 .h-strip-link:hover {
-  color: var(--accent);
+  color: var(--accent-deep);
 }
 
 
@@ -593,7 +594,7 @@
 }
 
 .h-close-link:hover {
-  color: var(--accent);
+  color: var(--accent-deep);
 }
 
 .h-close-arrow {
@@ -628,11 +629,11 @@
 
 .h-index .eyebrow,
 .h-index-total {
-  color: rgba(242, 237, 230, 0.45);
+  color: rgba(247, 239, 221, 0.45);
 }
 
 .h-index-head {
-  border-bottom-color: rgba(242, 237, 230, 0.10);
+  border-bottom-color: rgba(247, 239, 221, 0.10);
 }
 
 .h-index-ghost {
@@ -641,11 +642,11 @@
 }
 
 .h-index-item {
-  border-bottom-color: rgba(242, 237, 230, 0.08);
+  border-bottom-color: rgba(247, 239, 221, 0.08);
 }
 
 .h-idx-num {
-  color: rgba(242, 237, 230, 0.22);
+  color: rgba(247, 239, 221, 0.22);
 }
 
 .h-idx-title {
@@ -657,15 +658,15 @@
 }
 
 .h-idx-tagline {
-  color: rgba(242, 237, 230, 0.42);
+  color: rgba(247, 239, 221, 0.42);
 }
 
 .h-idx-cat {
-  color: rgba(242, 237, 230, 0.30);
+  color: rgba(247, 239, 221, 0.30);
 }
 
 .h-idx-arrow {
-  color: rgba(242, 237, 230, 0.22);
+  color: rgba(247, 239, 221, 0.22);
 }
 
 .h-index-item:hover .h-idx-arrow {
@@ -676,8 +677,8 @@
 .h-index-preview::before {
   background: linear-gradient(
     to right,
-    #1A1510 0%,
-    rgba(26, 21, 16, 0.30) 20%,
+    var(--ink) 0%,
+    rgba(14, 14, 14, 0.30) 20%,
     transparent 46%
   );
 }
@@ -688,22 +689,22 @@
   border-top: none;
 }
 
-/* ── Close — dark ink band ───────────────────────────────────── */
+/* ── Close — cream band, set apart from the footer below ───────── */
 .h-close {
-  background-color: var(--ink);
-  border-top: none;
+  background-color: var(--ground);
+  border-top: 1px solid var(--border);
 }
 
 .h-close-link {
-  color: var(--ground);
+  color: var(--ink);
 }
 
 .h-close-link:hover {
-  color: var(--accent);
+  color: var(--accent-deep);
 }
 
 .h-close-arrow {
-  color: rgba(242, 237, 230, 0.40);
+  color: rgba(14, 14, 14, 0.45);
 }
 
 

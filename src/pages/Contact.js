@@ -6,8 +6,8 @@ import './Contact.css';
 const contactLinks = [
   {
     platform: 'Email',
-    value: 'asiyaimtiaz03@gmail.com',
-    href: 'mailto:asiyaimtiaz03@gmail.com',
+    value: 'imtiazimagez@gmail.com',
+    href: 'mailto:imtiazimagez@gmail.com',
   },
   {
     platform: 'LinkedIn',
@@ -23,7 +23,7 @@ const contactLinks = [
 
 function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [state, handleSubmit, resetForm] = useForm(process.env.REACT_APP_FORMSPREE_ID);
+  const [state, handleSubmit, resetForm] = useForm("mbdvvkln");
   const [bodyRef, bodyVisible] = useInView();
 
   const handleChange = (e) =>

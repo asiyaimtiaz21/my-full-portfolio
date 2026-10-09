@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import resumePDF from '../assets/pdfs/my-resume.pdf';
+import logoImage from '../assets/Logo files/Landscape Design Big/1x/design website (YES).png';
 import './Navbar.css';
 
 const links = [
@@ -30,13 +31,17 @@ function Navbar() {
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
+  // Move focus into the menu on open; hand it back to the toggle only after
+  // the menu has actually been open (not on first render).
+  const wasOpenRef = useRef(false);
   useEffect(() => {
     if (menuOpen) {
       const firstLink = overlayRef.current?.querySelector('a');
       firstLink?.focus();
-    } else {
+    } else if (wasOpenRef.current) {
       hamburgerRef.current?.focus();
     }
+    wasOpenRef.current = menuOpen;
   }, [menuOpen]);
 
   useEffect(() => {
@@ -54,7 +59,7 @@ function Navbar() {
       <header className={`navbar${scrolled ? ' navbar--scrolled' : ''}`}>
 
         <Link to="/" className="navbar-logo" onClick={close}>
-          Asiya Imtiaz
+          <img src={logoImage} alt="Asiya Imtiaz" />
         </Link>
 
         <span className="navbar-sep" aria-hidden="true" />
@@ -74,18 +79,20 @@ function Navbar() {
                 </NavLink>
               </li>
             ))}
-            <li>
-              <a href={resumePDF} target="_blank" rel="noopener noreferrer" className="navbar-resume">
-                Résumé ↗
-              </a>
-            </li>
           </ul>
         </nav>
 
-        <Link to="/contact" className="navbar-cta" onClick={close}>
-          Let's Talk
-          <span aria-hidden="true">→</span>
-        </Link>
+        {/* Right-side actions — quiet résumé link, then the primary CTA */}
+        <div className="navbar-actions">
+          <a href={resumePDF} target="_blank" rel="noopener noreferrer" className="navbar-resume">
+            Résumé
+            <span aria-hidden="true">↗</span>
+          </a>
+          <Link to="/contact" className="navbar-cta" onClick={close}>
+            Let's Talk
+            <span aria-hidden="true">→</span>
+          </Link>
+        </div>
 
         {/* Hamburger — mobile only */}
         <button

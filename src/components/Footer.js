@@ -37,7 +37,7 @@ function Footer() {
         <div className="footer-connect">
           <span className="footer-col-label">Connect</span>
 
-          <a href="mailto:asiyaimtiaz03@gmail.com" className="footer-social-link" aria-label="Email">
+          <a href="mailto:imtiazimagez@gmail.com" className="footer-social-link" aria-label="Email">
             <svg className="footer-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
             </svg>
