@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/my-full-portfolio/static/css/main.acba1f13.css",
-    "main.js": "/my-full-portfolio/static/js/main.ad8c04f0.js",
+    "main.css": "/my-full-portfolio/static/css/main.8cc4ff50.css",
+    "main.js": "/my-full-portfolio/static/js/main.788a7387.js",
     "static/media/Nova - Midterm Presentation .pdf": "/my-full-portfolio/static/media/Nova - Midterm Presentation .a7f5eef43326f2120a45.pdf",
     "static/media/swc.pdf": "/my-full-portfolio/static/media/swc.070433549f393c5d87a3.pdf",
     "static/media/3.png": "/my-full-portfolio/static/media/3.e4bbe7ff9ed5767fee42.png",
@@ -49,16 +49,18 @@
     "static/media/17.png": "/my-full-portfolio/static/media/17.5c95741699b7364e124c.png",
     "static/media/profile-image-2.jpg": "/my-full-portfolio/static/media/profile-image-2.6f31af29a84c21963ea4.jpg",
     "static/media/my-resume.pdf": "/my-full-portfolio/static/media/my-resume.77b7c75d74c902e1607f.pdf",
+    "static/media/Stetched text (YES).png": "/my-full-portfolio/static/media/Stetched text (YES).b7db1cc409710a4419e7.png",
     "static/media/swc-logo.jpg": "/my-full-portfolio/static/media/swc-logo.032b124fabb631548c07.jpg",
     "static/media/horizontal.png": "/my-full-portfolio/static/media/horizontal.aa6c7018bbe50a07cf0f.png",
+    "static/media/design website (YES).png": "/my-full-portfolio/static/media/design website (YES).9e357268cee3a4b87fd1.png",
     "static/media/sable-title.jpg": "/my-full-portfolio/static/media/sable-title.3b519c133bd6648dd529.jpg",
     "static/media/coming-soon.svg": "/my-full-portfolio/static/media/coming-soon.12513a599bcb1e6c3b7abd1f4452a3ea.svg",
     "index.html": "/my-full-portfolio/index.html",
-    "main.acba1f13.css.map": "/my-full-portfolio/static/css/main.acba1f13.css.map",
-    "main.ad8c04f0.js.map": "/my-full-portfolio/static/js/main.ad8c04f0.js.map"
+    "main.8cc4ff50.css.map": "/my-full-portfolio/static/css/main.8cc4ff50.css.map",
+    "main.788a7387.js.map": "/my-full-portfolio/static/js/main.788a7387.js.map"
   },
   "entrypoints": [
-    "static/css/main.acba1f13.css",
-    "static/js/main.ad8c04f0.js"
+    "static/css/main.8cc4ff50.css",
+    "static/js/main.788a7387.js"
   ]
 }
